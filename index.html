@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>에듀케레 영수학원 중등 영어 분석지 – 천재(이재영) 중3</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1a2744;
+  --navy-light: #243560;
+  --navy-dark: #111b33;
+  --gold: #c8a84b;
+  --gold-light: #e2c97e;
+  --gold-pale: #f9f3e3;
+  --white: #ffffff;
+  --gray-100: #f7f7f9;
+  --gray-200: #ebebef;
+  --gray-300: #d0d0da;
+  --gray-600: #6b6b80;
+  --gray-800: #2d2d3a;
+  --correct: #1e8c5a;
+  --correct-bg: #e8f7f0;
+  --wrong: #c0392b;
+  --wrong-bg: #fdecea;
+  --sidebar-w: 240px;
+  --header-h: 64px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--gray-100);color:var(--gray-800);min-height:100vh;display:flex;flex-direction:column}
+
+/* ─── HEADER ─── */
+#site-header{position:fixed;top:0;left:0;right:0;height:var(--header-h);background:var(--navy);display:flex;align-items:center;padding:0 20px;z-index:1000;box-shadow:0 2px 12px rgba(0,0,0,.35)}
+#hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+#hamburger span{display:block;width:22px;height:2px;background:var(--gold);border-radius:2px;transition:.3s}
+.header-brand{display:flex;flex-direction:column;margin-left:12px}
+.header-brand .brand-main{font-size:1.05rem;font-weight:700;color:var(--gold);letter-spacing:.02em;line-height:1.2}
+.header-brand .brand-sub{font-size:.7rem;color:rgba(255,255,255,.6);letter-spacing:.05em}
+.header-right{margin-left:auto;font-size:.75rem;color:rgba(255,255,255,.45);letter-spacing:.03em}
+
+/* ─── LAYOUT ─── */
+#layout{display:flex;margin-top:var(--header-h);min-height:calc(100vh - var(--header-h))}
+
+/* ─── SIDEBAR ─── */
+#sidebar{width:var(--sidebar-w);background:var(--navy-dark);flex-shrink:0;position:fixed;top:var(--header-h);bottom:0;left:0;overflow-y:auto;z-index:900;transition:transform .3s ease;scrollbar-width:thin;scrollbar-color:var(--navy-light) transparent}
+#sidebar::-webkit-scrollbar{width:4px}
+#sidebar::-webkit-scrollbar-thumb{background:var(--navy-light);border-radius:2px}
+.sidebar-section-title{font-size:.65rem;font-weight:700;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;padding:20px 16px 8px;border-bottom:1px solid rgba(200,168,75,.18)}
+.sidebar-item{display:block;padding:11px 16px;cursor:pointer;border-left:3px solid transparent;transition:.2s;color:rgba(255,255,255,.62);font-size:.8rem;line-height:1.4}
+.sidebar-item:hover{color:var(--white);background:rgba(255,255,255,.05);border-left-color:var(--gold-light)}
+.sidebar-item.active{color:var(--white);background:rgba(200,168,75,.12);border-left-color:var(--gold);font-weight:700}
+.sidebar-item .lesson-num{display:block;font-size:.65rem;color:var(--gold);font-weight:700;letter-spacing:.05em;margin-bottom:2px}
+.sidebar-item .lesson-title{display:block;font-size:.78rem}
+
+/* ─── MAIN CONTENT ─── */
+#main{margin-left:var(--sidebar-w);flex:1;padding:28px 24px 60px}
+.lesson-panel{display:none}
+.lesson-panel.active{display:block}
+.lesson-header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);border-radius:12px;padding:24px 28px;margin-bottom:22px;box-shadow:0 4px 18px rgba(26,39,68,.2)}
+.lesson-header .pub-badge{display:inline-block;background:rgba(200,168,75,.2);border:1px solid rgba(200,168,75,.4);color:var(--gold-light);font-size:.68rem;font-weight:700;letter-spacing:.08em;padding:3px 10px;border-radius:20px;margin-bottom:10px}
+.lesson-header h1{font-size:1.4rem;font-weight:900;color:var(--white);line-height:1.3}
+.lesson-header h1 em{font-style:normal;color:var(--gold)}
+.lesson-header .lesson-meta{margin-top:8px;font-size:.75rem;color:rgba(255,255,255,.55);letter-spacing:.03em}
+
+/* ─── TABS ─── */
+.tab-nav{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:20px;background:var(--white);border-radius:10px;padding:6px;box-shadow:0 1px 6px rgba(0,0,0,.07)}
+.tab-btn{flex:1;min-width:80px;padding:8px 6px;border:none;background:transparent;border-radius:7px;font-family:'Noto Sans KR',sans-serif;font-size:.72rem;font-weight:500;color:var(--gray-600);cursor:pointer;transition:.2s;white-space:nowrap;text-align:center}
+.tab-btn:hover{background:var(--gray-200);color:var(--navy)}
+.tab-btn.active{background:var(--navy);color:var(--white);font-weight:700;box-shadow:0 2px 8px rgba(26,39,68,.3)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* ─── TAB 1: 본문분석 ─── */
+.text-section-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;margin:22px 0 12px;padding:0 0 6px;border-bottom:2px solid var(--gold-pale)}
+.sentence-block{background:var(--white);border-radius:10px;padding:16px 18px;margin-bottom:14px;box-shadow:0 1px 5px rgba(0,0,0,.06)}
+.sentence-num-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
+.sentence-num{display:flex;align-items:center;justify-content:center;width:26px;height:26px;background:var(--navy);color:var(--white);border-radius:50%;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:2px}
+.sentence-en{font-family:'EB Garamond',serif;font-size:1.05rem;line-height:1.7;color:var(--navy);border:1.5px solid var(--navy);border-radius:7px;padding:8px 12px;background:#f4f6fb}
+.speaker-name{font-weight:700;color:var(--navy)}
+.slash-reading{font-size:.82rem;color:var(--gray-600);line-height:1.8;margin:6px 0 4px 36px;font-style:italic}
+.slash-reading .slash{color:var(--gold);font-weight:700;margin:0 2px}
+.korean-reading{font-size:.82rem;color:var(--navy);margin:2px 0 8px 36px;font-weight:500}
+.grammar-note{background:var(--gold-pale);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:7px 12px;margin:6px 0 0 36px;font-size:.78rem;line-height:1.7}
+.grammar-note .gn-label{font-weight:700;color:var(--navy-dark)}
+.grammar-note .gn-example{color:var(--navy);font-family:'EB Garamond',serif;font-size:.92rem}
+.grammar-note .gn-point{color:var(--correct);font-weight:600}
+
+/* ─── TAB 2: 핵심단어 ─── */
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:24px}
+.vocab-card{background:var(--white);border-radius:10px;padding:14px 16px;box-shadow:0 1px 5px rgba(0,0,0,.06);border-top:3px solid var(--navy)}
+.vocab-word{font-family:'EB Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--navy);margin-bottom:4px}
+.vocab-meta{font-size:.72rem;color:var(--gray-600);margin-bottom:4px}
+.vocab-meta .pos{background:var(--navy);color:var(--white);border-radius:4px;padding:1px 6px;font-size:.66rem;font-weight:700;margin-right:6px}
+.vocab-meaning{font-size:.88rem;font-weight:700;color:var(--navy-dark);margin-bottom:5px}
+.vocab-example{font-size:.78rem;color:var(--gray-600);font-style:italic;border-top:1px solid var(--gray-200);padding-top:5px;margin-top:4px}
+.expr-section-title{font-size:.9rem;font-weight:700;color:var(--navy);margin:20px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--gold)}
+.expr-card{background:var(--white);border-radius:10px;padding:14px 16px;margin-bottom:10px;box-shadow:0 1px 5px rgba(0,0,0,.06);display:flex;flex-direction:column;gap:4px;border-left:4px solid var(--gold)}
+.expr-phrase{font-family:'EB Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--navy)}
+.expr-meaning{font-size:.85rem;font-weight:700;color:var(--navy-dark)}
+.expr-usage{font-size:.78rem;color:var(--gray-600);font-style:italic}
+
+/* ─── TAB 3: 주요문법 ─── */
+.grammar-section{background:var(--white);border-radius:12px;padding:20px 22px;margin-bottom:18px;box-shadow:0 1px 6px rgba(0,0,0,.07)}
+.grammar-section h3{font-size:1rem;font-weight:900;color:var(--navy);margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--gold)}
+.grammar-desc{font-size:.85rem;line-height:1.9;color:var(--gray-800);margin-bottom:10px}
+.grammar-example-box{background:#f4f6fb;border:1.5px solid var(--navy);border-radius:7px;padding:10px 14px;margin:8px 0;font-family:'EB Garamond',serif;font-size:1rem;color:var(--navy)}
+.grammar-extra{font-size:.8rem;color:var(--gray-600);margin-top:6px;padding-left:12px;border-left:3px solid var(--gold-light);line-height:1.8}
+
+/* ─── QUIZ SHARED ─── */
+.quiz-block{background:var(--white);border-radius:12px;padding:18px 20px;margin-bottom:16px;box-shadow:0 1px 6px rgba(0,0,0,.07)}
+.quiz-num{display:inline-block;background:var(--navy);color:var(--white);border-radius:6px;font-size:.72rem;font-weight:700;padding:2px 8px;margin-bottom:8px}
+.quiz-type-badge{display:inline-block;background:var(--gold-pale);border:1px solid var(--gold);color:var(--navy);border-radius:12px;font-size:.68rem;font-weight:700;padding:2px 8px;margin-left:6px}
+.quiz-q{font-size:.9rem;line-height:1.8;color:var(--navy-dark);margin-bottom:12px}
+.quiz-q strong{color:var(--navy);text-decoration:underline;text-decoration-color:var(--gold)}
+.options{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+.opt-btn{text-align:left;padding:9px 14px;border:1.5px solid var(--gray-300);border-radius:8px;background:var(--white);font-family:'Noto Sans KR',sans-serif;font-size:.83rem;color:var(--gray-800);cursor:pointer;transition:.2s;line-height:1.5}
+.opt-btn:hover{border-color:var(--navy);background:#f0f3fb}
+.opt-btn.correct{border-color:var(--correct);background:var(--correct-bg);color:var(--correct);font-weight:700}
+.opt-btn.wrong{border-color:var(--wrong);background:var(--wrong-bg);color:var(--wrong);font-weight:700}
+.opt-btn.reveal{border-color:var(--correct);background:var(--correct-bg);color:var(--correct)}
+.quiz-feedback{font-size:.8rem;font-weight:700;margin:4px 0;min-height:1.2em}
+.quiz-feedback.correct{color:var(--correct)}
+.quiz-feedback.wrong{color:var(--wrong)}
+.quiz-explanation{font-size:.78rem;color:var(--gray-600);margin-top:6px;padding:6px 10px;background:var(--gray-100);border-radius:6px;line-height:1.7}
+.quiz-actions{display:flex;gap:8px;margin-top:8px;align-items:center}
+.reset-btn{background:none;border:1.5px solid var(--gray-300);border-radius:6px;font-size:.75rem;color:var(--gray-600);cursor:pointer;padding:4px 10px;transition:.2s;font-family:'Noto Sans KR',sans-serif}
+.reset-btn:hover{border-color:var(--navy);color:var(--navy)}
+
+/* fill-blank */
+.fill-blank-area{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
+.fill-input{border:none;border-bottom:2px solid var(--navy);padding:3px 6px;font-family:'EB Garamond',serif;font-size:1.05rem;color:var(--navy);background:transparent;outline:none;min-width:80px;text-align:center}
+.fill-input:focus{border-bottom-color:var(--gold)}
+.fill-input.correct{border-bottom-color:var(--correct);color:var(--correct)}
+.fill-input.wrong{border-bottom-color:var(--wrong);color:var(--wrong)}
+.check-btn{background:var(--navy);color:var(--white);border:none;border-radius:7px;padding:6px 14px;font-family:'Noto Sans KR',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;transition:.2s}
+.check-btn:hover{background:var(--navy-light)}
+
+/* TF */
+.tf-options{display:flex;gap:10px;margin-bottom:10px}
+.tf-btn{padding:8px 22px;border:1.5px solid var(--gray-300);border-radius:8px;background:var(--white);font-family:'Noto Sans KR',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;transition:.2s}
+.tf-btn:hover{border-color:var(--navy)}
+.tf-btn.correct{border-color:var(--correct);background:var(--correct-bg);color:var(--correct)}
+.tf-btn.wrong{border-color:var(--wrong);background:var(--wrong-bg);color:var(--wrong)}
+.tf-btn.reveal{border-color:var(--correct);background:var(--correct-bg);color:var(--correct)}
+
+/* ─── TAB 6: 서술형 ─── */
+.essay-block{background:var(--white);border-radius:12px;padding:20px 22px;margin-bottom:16px;box-shadow:0 1px 6px rgba(0,0,0,.07)}
+.essay-block h4{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:10px}
+.essay-condition{font-size:.8rem;color:var(--gray-600);background:var(--gold-pale);border-left:3px solid var(--gold);padding:6px 10px;border-radius:0 6px 6px 0;margin-bottom:12px;line-height:1.7}
+.answer-lines{display:flex;flex-direction:column;gap:12px;margin:14px 0}
+.answer-line{border:none;border-bottom:1.5px solid var(--navy);width:100%;padding:4px 0;font-family:'Noto Sans KR',sans-serif;font-size:.9rem;background:transparent;outline:none;color:var(--navy)}
+.toggle-answer-btn{background:var(--navy);color:var(--white);border:none;border-radius:7px;padding:7px 16px;font-family:'Noto Sans KR',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;transition:.2s;margin-top:6px}
+.toggle-answer-btn:hover{background:var(--gold);color:var(--navy)}
+.model-answer{display:none;margin-top:12px;padding:12px 14px;background:var(--correct-bg);border:1.5px solid var(--correct);border-radius:8px;font-size:.85rem;line-height:1.8;color:var(--gray-800)}
+.model-answer.show{display:block}
+
+/* ─── TAB 7: 정답지 ─── */
+.answer-key-section{background:var(--white);border-radius:12px;padding:20px 22px;margin-bottom:16px;box-shadow:0 1px 6px rgba(0,0,0,.07)}
+.answer-key-section h3{font-size:.95rem;font-weight:700;color:var(--navy);border-bottom:2px solid var(--gold);padding-bottom:7px;margin-bottom:12px}
+.answer-list{list-style:none;display:flex;flex-direction:column;gap:7px}
+.answer-list li{font-size:.85rem;line-height:1.7;padding:6px 10px;background:var(--gray-100);border-radius:6px}
+.answer-list li strong{color:var(--navy);margin-right:6px}
+.answer-list li .ans{color:var(--correct);font-weight:700}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:768px){
+  #hamburger{display:flex}
+  #sidebar{transform:translateX(-100%)}
+  #sidebar.open{transform:translateX(0)}
+  #main{margin-left:0;padding:16px 12px 60px}
+  .vocab-grid{grid-template-columns:1fr}
+  .tab-btn{font-size:.65rem;padding:7px 4px;min-width:60px}
+  .lesson-header h1{font-size:1.1rem}
+}
+@media(max-width:480px){
+  .tab-nav{gap:2px}
+  .tab-btn{min-width:48px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header">
+  <button id="hamburger" onclick="toggleSidebar()" aria-label="메뉴">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="header-brand">
+    <span class="brand-main">📚 에듀케레 영수학원</span>
+    <span class="brand-sub">중등 영어 분석지 · 천재(이재영) · 중학교 3학년</span>
+  </div>
+  <div class="header-right">2025 개정</div>
+</header>
+
+<!-- LAYOUT -->
+<div id="layout">
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div class="sidebar-section-title">단원 목록</div>
+  <div class="sidebar-item active" onclick="showLesson('l1')">
+    <span class="lesson-num">천재(이재영) · 중3</span>
+    <span class="lesson-title">Lesson 1 · A Priceless Gift</span>
+  </div>
+  <div class="sidebar-item" onclick="showLesson('l2')">
+    <span class="lesson-num">천재(이재영) · 중3</span>
+    <span class="lesson-title">Lesson 2 · The Amazing Ants</span>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main id="main">
+<!-- ════════════════════════════════════════
+     LESSON 1  (완전판)
+════════════════════════════════════════ -->
+<div class="lesson-panel active" id="l1">
+  <div class="lesson-header">
+    <div class="pub-badge">천재(이재영) · 중학교 3학년</div>
+    <h1>Lesson 1 · <em>A Priceless Gift</em></h1>
+    <div class="lesson-meta">대화문 3개 · 본문 4파트 · 핵심문법 3개</div>
+  </div>
+
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="showTab('l1','t1')">① 본문분석</button>
+    <button class="tab-btn" onclick="showTab('l1','t2')">② 핵심단어</button>
+    <button class="tab-btn" onclick="showTab('l1','t3')">③ 주요문법</button>
+    <button class="tab-btn" onclick="showTab('l1','t4')">④ 문법연습</button>
+    <button class="tab-btn" onclick="showTab('l1','t5')">⑤ 본문이해</button>
+    <button class="tab-btn" onclick="showTab('l1','t6')">⑥ 서술형</button>
+    <button class="tab-btn" onclick="showTab('l1','t7')">⑦ 정답지</button>
+  </div>
+
+  <!-- ① 본문분석 -->
+  <div class="tab-content active" id="l1-t1">
+
+    <div class="text-section-label">📢 대화문 1</div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">①</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> Hey, Minjun. What a surprise!</div></div>
+      <div class="slash-reading">Hey, Minjun. / What a surprise!</div>
+      <div class="korean-reading">안녕, 민준. / 정말 놀랍다!</div>
+      <div class="grammar-note"><span class="gn-label">◆ 감탄문 What + a/an + 형용사 + 명사!</span><br>▶ <span class="gn-example">What a surprise!</span><br>★ <span class="gn-point">'What + (a/an) + 형용사 + 명사 + 주어 + 동사!' 구조로 강한 감정 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">②</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> Hi, Sora. I'm glad we're in the same class.</div></div>
+      <div class="slash-reading">Hi, Sora. / I'm glad / we're in the same class.</div>
+      <div class="korean-reading">안녕, 소라. / 나는 기뻐 / 우리가 같은 반인 게.</div>
+      <div class="grammar-note"><span class="gn-label">◆ be glad that절 (감정 + 이유)</span><br>▶ <span class="gn-example">I'm glad (that) we're in the same class.</span><br>★ <span class="gn-point">glad / happy / sorry / surprised 뒤에 that절로 이유·내용 설명; that 생략 가능</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">③</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> I am, too. We're now in our last year in middle school. How do you feel?</div></div>
+      <div class="slash-reading">I am, too. / We're now in our last year / in middle school. / How do you feel?</div>
+      <div class="korean-reading">나도 그래. / 우리는 이제 마지막 학년이야 / 중학교에서. / 기분이 어때?</div>
+      <div class="grammar-note"><span class="gn-label">◆ 동의 표현 I am, too. = So am I.</span><br>▶ <span class="gn-example">I am, too.</span><br>★ <span class="gn-point">긍정 동의: '주어 + 조동사/be + too' 또는 'So + be/조동사 + 주어'</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">④</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> I'm a little worried that there'll be more schoolwork.</div></div>
+      <div class="slash-reading">I'm a little worried / that there'll be more schoolwork.</div>
+      <div class="korean-reading">나는 조금 걱정돼 / 학교 공부가 더 많아질 것 같아서.</div>
+      <div class="grammar-note"><span class="gn-label">◆ there will be ~ (미래의 존재)</span><br>▶ <span class="gn-example">there'll be more schoolwork</span><br>★ <span class="gn-point">'there will be + 명사'는 미래에 ~이 있을 것이다; there'll은 there will의 축약형</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑤</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> Me, too. We also have to think about our high school.</div></div>
+      <div class="slash-reading">Me, too. / We also have to think / about our high school.</div>
+      <div class="korean-reading">나도. / 우리는 또한 생각해야 해 / 고등학교에 대해서도.</div>
+      <div class="grammar-note"><span class="gn-label">◆ have to + 동사원형 (의무)</span><br>▶ <span class="gn-example">We have to think about our high school.</span><br>★ <span class="gn-point">must와 같이 '~해야 한다'; 부정 don't have to(불필요) ≠ must not(금지)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑥</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> Which kind of school do you have in mind?</div></div>
+      <div class="slash-reading">Which kind of school / do you have in mind?</div>
+      <div class="korean-reading">어떤 종류의 학교를 / 염두에 두고 있어?</div>
+      <div class="grammar-note"><span class="gn-label">◆ have ~ in mind (~을 염두에 두다)</span><br>▶ <span class="gn-example">Which kind of school do you have in mind?</span><br>★ <span class="gn-point">'have ~ in mind'는 '~을 생각하다/염두에 두다'의 뜻의 관용 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑦</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> I'm thinking of an animation high school. I love painting.</div></div>
+      <div class="slash-reading">I'm thinking of an animation high school. / I love painting.</div>
+      <div class="korean-reading">나는 애니메이션 고등학교를 생각하고 있어. / 나는 그림 그리는 것을 정말 좋아해.</div>
+      <div class="grammar-note"><span class="gn-label">◆ be thinking of + 명사 (현재 고려 중)</span><br>▶ <span class="gn-example">I'm thinking of an animation high school.</span><br>★ <span class="gn-point">'think of'는 '~을 생각하다'; 현재진행형으로 지금 고려 중임을 표현</span></div>
+    </div>
+
+    <div class="text-section-label">📢 대화문 2</div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">①</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> Oliver, what club are you going to join?</div></div>
+      <div class="slash-reading">Oliver, / what club / are you going to join?</div>
+      <div class="korean-reading">Oliver, / 무슨 동아리에 / 가입할 거야?</div>
+      <div class="grammar-note"><span class="gn-label">◆ be going to + 동사원형 (미래 계획)</span><br>▶ <span class="gn-example">what club are you going to join?</span><br>★ <span class="gn-point">이미 계획된 가까운 미래를 나타낼 때 'be going to' 사용</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">②</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> I'm not sure. How about you, Sora?</div></div>
+      <div class="slash-reading">I'm not sure. / How about you, Sora?</div>
+      <div class="korean-reading">잘 모르겠어. / 너는 어때, Sora?</div>
+      <div class="grammar-note"><span class="gn-label">◆ How about you? (되묻기)</span><br>▶ <span class="gn-example">How about you, Sora?</span><br>★ <span class="gn-point">'How about you?'는 상대방 의견을 되묻는 표현 = What about you?</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">③</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> I want to join the school dance club.</div></div>
+      <div class="slash-reading">I want to join / the school dance club.</div>
+      <div class="korean-reading">나는 가입하고 싶어 / 학교 댄스 동아리에.</div>
+      <div class="grammar-note"><span class="gn-label">◆ want to + 동사원형 (~하고 싶다)</span><br>▶ <span class="gn-example">I want to join the school dance club.</span><br>★ <span class="gn-point">'want to + 동사원형'은 '~하고 싶다'; to 뒤에는 반드시 동사원형</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">④</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> Really? But I heard you're preparing for an animation high school.</div></div>
+      <div class="slash-reading">Really? / But I heard / you're preparing for an animation high school.</div>
+      <div class="korean-reading">정말? / 하지만 나는 들었어 / 네가 애니메이션 고등학교를 준비하고 있다고.</div>
+      <div class="grammar-note"><span class="gn-label">◆ hear + that절 (간접화법)</span><br>▶ <span class="gn-example">I heard (that) you're preparing for an animation high school.</span><br>★ <span class="gn-point">지각동사 hear 뒤에 that절 → '~라고 듣다'; that 생략 가능</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑤</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> Right, but I need some time to relax. We all need to do something to get over stress.</div></div>
+      <div class="slash-reading">Right, but I need some time / to relax. / We all need to do something / to get over stress.</div>
+      <div class="korean-reading">맞아, 하지만 나는 시간이 필요해 / 쉴. / 우리 모두는 뭔가를 할 필요가 있어 / 스트레스를 극복하기 위해.</div>
+      <div class="grammar-note"><span class="gn-label">◆ to부정사 형용사적 용법 (명사 수식)</span><br>▶ <span class="gn-example">time to relax / something to get over stress</span><br>★ <span class="gn-point">to부정사가 명사 뒤에서 '~할 (명사)'의 의미로 수식 (형용사적 용법)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑥</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> You can say that again.</div></div>
+      <div class="slash-reading">You can say that again.</div>
+      <div class="korean-reading">정말 맞는 말이야. (강한 동의)</div>
+      <div class="grammar-note"><span class="gn-label">◆ 관용 표현: You can say that again.</span><br>▶ <span class="gn-example">You can say that again.</span><br>★ <span class="gn-point">직역 '다시 말해도 된다' → 실제 의미: '완전히 동의해!'의 강한 동의 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑦</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> Why don't you join me? It'll be fun.</div></div>
+      <div class="slash-reading">Why don't you join me? / It'll be fun.</div>
+      <div class="korean-reading">나랑 같이 하지 않을래? / 재미있을 거야.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 제안: Why don't you + 동사원형?</span><br>▶ <span class="gn-example">Why don't you join me?</span><br>★ <span class="gn-point">'Why don't you + 동사원형?'은 상대방에게 무언가를 권유/제안하는 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑧</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> No, thanks. Dancing is not for me. I have two left feet.</div></div>
+      <div class="slash-reading">No, thanks. / Dancing is not for me. / I have two left feet.</div>
+      <div class="korean-reading">아니, 괜찮아. / 춤은 나한테 안 맞아. / 나는 몸치야.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 관용 표현: have two left feet (몸치)</span><br>▶ <span class="gn-example">I have two left feet.</span><br>★ <span class="gn-point">'두 발이 다 왼발'이라는 뜻 → '춤을 못 추다/몸치이다'의 관용 표현</span></div>
+    </div>
+
+    <div class="text-section-label">📢 대화문 3</div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">①</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> Jimin, look! That red phone case looks nice!</div></div>
+      <div class="slash-reading">Jimin, look! / That red phone case / looks nice!</div>
+      <div class="korean-reading">지민아, 봐! / 저 빨간 폰 케이스 / 예쁘다!</div>
+      <div class="grammar-note"><span class="gn-label">◆ 감각동사 look + 형용사</span><br>▶ <span class="gn-example">That red phone case looks nice!</span><br>★ <span class="gn-point">look/feel/smell/taste/sound + 형용사 → '~하게 보이다/느껴지다' (부사 아님)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">②</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> You can say that again! Mom would love it as a birthday present.</div></div>
+      <div class="slash-reading">You can say that again! / Mom would love it / as a birthday present.</div>
+      <div class="korean-reading">정말 그렇지! / 엄마가 그걸 정말 좋아하실 거야 / 생일 선물로.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 조동사 would (추측/완곡한 의지)</span><br>▶ <span class="gn-example">Mom would love it as a birthday present.</span><br>★ <span class="gn-point">would는 추측이나 완곡한 의지를 나타낼 때 사용</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">③</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> I wonder how much it costs.</div></div>
+      <div class="slash-reading">I wonder / how much it costs.</div>
+      <div class="korean-reading">나는 궁금해 / 그게 얼마인지.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 간접의문문: I wonder + 의문사 + 주어 + 동사</span><br>▶ <span class="gn-example">I wonder how much it costs.</span><br>★ <span class="gn-point">간접의문문 어순: 의문사 + 주어 + 동사 (직접의문문의 도치 없음)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">④</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> Let me see. It costs 40,000 won.</div></div>
+      <div class="slash-reading">Let me see. / It costs 40,000 won.</div>
+      <div class="korean-reading">어디 보자. / 그건 4만 원이야.</div>
+      <div class="grammar-note"><span class="gn-label">◆ Let me + 동사원형 (허락/부탁)</span><br>▶ <span class="gn-example">Let me see.</span><br>★ <span class="gn-point">'Let me + 동사원형'은 '내가 ~하게 해줘'; 관용적으로 '어디 보자'의 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑤</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> Really? That's so expensive!</div></div>
+      <div class="slash-reading">Really? / That's so expensive!</div>
+      <div class="korean-reading">정말? / 너무 비싸다!</div>
+      <div class="grammar-note"><span class="gn-label">◆ so + 형용사 (강조)</span><br>▶ <span class="gn-example">That's so expensive!</span><br>★ <span class="gn-point">so는 형용사/부사를 강조하여 '매우, 정말'의 의미</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑥</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> I don't agree. Look! It works as a wallet, too.</div></div>
+      <div class="slash-reading">I don't agree. / Look! / It works as a wallet, too.</div>
+      <div class="korean-reading">나는 동의하지 않아. / 봐! / 지갑으로도 쓸 수 있어.</div>
+      <div class="grammar-note"><span class="gn-label">◆ work as ~ (~로 기능하다)</span><br>▶ <span class="gn-example">It works as a wallet, too.</span><br>★ <span class="gn-point">'work as + 명사'는 '~로서 기능하다/역할을 하다'의 의미</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑦</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> Oh, I didn't see that. Then let's buy it for Mom.</div></div>
+      <div class="slash-reading">Oh, I didn't see that. / Then let's buy it / for Mom.</div>
+      <div class="korean-reading">오, 그걸 못 봤네. / 그러면 그걸 사자 / 엄마를 위해.</div>
+      <div class="grammar-note"><span class="gn-label">◆ Let's + 동사원형 (제안)</span><br>▶ <span class="gn-example">let's buy it for Mom</span><br>★ <span class="gn-point">'Let's + 동사원형'은 '~하자'의 제안 표현 = Why don't we ~?</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑧</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> Okay. I'm delighted to buy something special for Mom.</div></div>
+      <div class="slash-reading">Okay. / I'm delighted / to buy something special for Mom.</div>
+      <div class="korean-reading">좋아. / 나는 기뻐 / 엄마를 위해 특별한 것을 사게 되어.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 형용사 + to부정사 (감정의 원인)</span><br>▶ <span class="gn-example">I'm delighted to buy something special for Mom.</span><br>★ <span class="gn-point">be glad/happy/delighted + to부정사: '~해서 기쁘다' (원인을 나타내는 to부정사 부사적 용법)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑨</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> So am I.</div></div>
+      <div class="slash-reading">So am I.</div>
+      <div class="korean-reading">나도 그래.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 긍정 동의: So + be동사 + 주어</span><br>▶ <span class="gn-example">So am I.</span><br>★ <span class="gn-point">'So + be/조동사 + 주어' = 나도 그래; 앞 문장의 동사 종류에 맞춰 사용</span></div>
+    </div>
+
+    <div class="text-section-label">📖 본문 1 – A Priceless Gift</div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">①</div>
+        <div class="sentence-en">Long ago, an honest merchant lived in Genoa, Italy.</div></div>
+      <div class="slash-reading">Long ago, / an honest merchant / lived / in Genoa, Italy.</div>
+      <div class="korean-reading">오래전에, / 한 정직한 상인이 / 살았다 / 이탈리아 제노바에.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 시간 부사구 선행 (Long ago)</span><br>▶ <span class="gn-example">Long ago, an honest merchant lived in Genoa.</span><br>★ <span class="gn-point">시간 부사구가 문장 앞에 오면 주어+동사 어순은 그대로 유지</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">②</div>
+        <div class="sentence-en">His name was Antonio, and he went to different places to support his family by trading.</div></div>
+      <div class="slash-reading">His name was Antonio, / and he went to different places / to support his family / by trading.</div>
+      <div class="korean-reading">그의 이름은 Antonio였고, / 그는 여러 곳을 다녔다 / 가족을 부양하기 위해 / 무역을 통해.</div>
+      <div class="grammar-note"><span class="gn-label">◆ to부정사(목적) + by + 동명사(수단)</span><br>▶ <span class="gn-example">to support his family by trading</span><br>★ <span class="gn-point">'to부정사'는 목적(~하기 위해), 'by + 동명사'는 수단(~함으로써)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">③</div>
+        <div class="sentence-en">One day, he filled his ship with goods and visited a faraway island.</div></div>
+      <div class="slash-reading">One day, / he filled his ship with goods / and visited a faraway island.</div>
+      <div class="korean-reading">어느 날, / 그는 배를 상품으로 가득 채웠고 / 멀리 있는 섬을 방문했다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ fill A with B (A를 B로 채우다)</span><br>▶ <span class="gn-example">he filled his ship with goods</span><br>★ <span class="gn-point">'fill + 목적어 + with + 명사' 구조; B가 A를 채우는 내용물</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">④</div>
+        <div class="sentence-en">There he traded tools for spices and books for nuts.</div></div>
+      <div class="slash-reading">There / he traded tools for spices / and books for nuts.</div>
+      <div class="korean-reading">거기서 / 그는 도구를 향신료와 교환했고 / 책을 견과류와 교환했다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ trade A for B (A를 B와 교환)</span><br>▶ <span class="gn-example">traded tools for spices</span><br>★ <span class="gn-point">'trade + 목적어 + for + 명사'로 물물 교환을 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑤</div>
+        <div class="sentence-en">Thanks to Antonio, the islanders could get what they needed.</div></div>
+      <div class="slash-reading">Thanks to Antonio, / the islanders could get / what they needed.</div>
+      <div class="korean-reading">Antonio 덕분에, / 섬 주민들은 얻을 수 있었다 / 그들이 필요한 것을.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 관계대명사 what (~하는 것)</span><br>▶ <span class="gn-example">get what they needed</span><br>★ <span class="gn-point">'what + 주어 + 동사'는 선행사를 포함한 관계대명사절 = the thing that</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑥</div>
+        <div class="sentence-en">One night, Antonio had dinner with the island's queen at her palace.</div></div>
+      <div class="slash-reading">One night, / Antonio had dinner / with the island's queen / at her palace.</div>
+      <div class="korean-reading">어느 날 밤, / Antonio는 저녁을 먹었다 / 섬의 여왕과 함께 / 그녀의 궁전에서.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 전치사구 with(동반) / at(장소)</span><br>▶ <span class="gn-example">with the island's queen at her palace</span><br>★ <span class="gn-point">with: ~와 함께(동반), at: ~에서(비교적 좁은 장소)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑦</div>
+        <div class="sentence-en">When dinner was served, rats appeared, and some servants chased them away with sticks.</div></div>
+      <div class="slash-reading">When dinner was served, / rats appeared, / and some servants / chased them away / with sticks.</div>
+      <div class="korean-reading">저녁이 차려졌을 때, / 쥐들이 나타났고, / 일부 하인들이 / 그것들을 쫓아냈다 / 막대기로.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 수동태: be + 과거분사</span><br>▶ <span class="gn-example">dinner was served</span><br>★ <span class="gn-point">'be동사 + 과거분사'로 수동태 표현; 주어가 행위를 '당하는' 경우에 사용</span></div>
+    </div>
+
+    <div class="text-section-label">📖 본문 2 – A Priceless Gift</div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">①</div>
+        <div class="sentence-en">Antonio was greatly surprised that there were rats in the palace.</div></div>
+      <div class="slash-reading">Antonio was greatly surprised / that there were rats / in the palace.</div>
+      <div class="korean-reading">Antonio는 매우 놀랐다 / 쥐들이 있다는 것에 / 궁전 안에.</div>
+      <div class="grammar-note"><span class="gn-label">◆ be surprised that ~ (감정 + that절)</span><br>▶ <span class="gn-example">was greatly surprised that there were rats</span><br>★ <span class="gn-point">be surprised/glad/sorry + that절로 감정의 이유/원인을 설명</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">②</div>
+        <div class="sentence-en">He asked, "Are there no cats on this island?"</div></div>
+      <div class="slash-reading">He asked, / "Are there no cats / on this island?"</div>
+      <div class="korean-reading">그는 물었다, / "이 섬에는 / 고양이가 없나요?"</div>
+      <div class="grammar-note"><span class="gn-label">◆ There is/are 부정 의문문</span><br>▶ <span class="gn-example">Are there no cats on this island?</span><br>★ <span class="gn-point">존재 여부를 묻는 의문문; no를 써서 '전혀 없다'는 강한 부정 의미</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">③</div>
+        <div class="sentence-en">The queen looked puzzled. "What is a cat?" she asked.</div></div>
+      <div class="slash-reading">The queen looked puzzled. / "What is a cat?" / she asked.</div>
+      <div class="korean-reading">여왕은 당혹스러워 보였다. / "고양이가 무엇인가요?" / 그녀가 물었다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 감각동사 look + 형용사</span><br>▶ <span class="gn-example">The queen looked puzzled.</span><br>★ <span class="gn-point">look + 형용사(과거분사형 포함)로 '~해 보이다'; puzzled는 '당혹스러운' 형용사</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">④</div>
+        <div class="sentence-en">The merchant said to himself, "What the islanders here need is not tools or books, but cats."</div></div>
+      <div class="slash-reading">The merchant said to himself, / "What the islanders here need / is not tools or books, / but cats."</div>
+      <div class="korean-reading">그 상인은 혼잣말을 했다, / "이곳 섬 주민들이 필요한 것은 / 도구나 책이 아니라, / 고양이야."</div>
+      <div class="grammar-note"><span class="gn-label">◆ not A but B (A가 아니라 B)</span><br>▶ <span class="gn-example">not tools or books, but cats</span><br>★ <span class="gn-point">'not A but B' 구문은 A를 부정하고 B를 강조하는 대조 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑤</div>
+        <div class="sentence-en">He brought two cats from his ship and let them run free.</div></div>
+      <div class="slash-reading">He brought two cats / from his ship / and let them run free.</div>
+      <div class="korean-reading">그는 두 마리 고양이를 데려왔다 / 배에서 / 그리고 자유롭게 뛰어다니게 했다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 사역동사 let + 목적어 + 동사원형</span><br>▶ <span class="gn-example">let them run free</span><br>★ <span class="gn-point">사역동사 let/make/have + 목적어 + 동사원형; let은 '허락하여 ~하게 하다'</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑥</div>
+        <div class="sentence-en">"What amazing animals!" cried the queen when she saw all the rats run away.</div></div>
+      <div class="slash-reading">"What amazing animals!" / cried the queen / when she saw / all the rats run away.</div>
+      <div class="korean-reading">"정말 놀라운 동물들이야!" / 여왕이 외쳤다 / 그녀가 봤을 때 / 모든 쥐들이 도망가는 것을.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 지각동사 see + 목적어 + 동사원형</span><br>▶ <span class="gn-example">saw all the rats run away</span><br>★ <span class="gn-point">see/watch/hear + 목적어 + 동사원형: 목적어가 동작 전체를 하는 것을 지각</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑦</div>
+        <div class="sentence-en">She gave Antonio a chest that was filled with jewels.</div></div>
+      <div class="slash-reading">She gave Antonio / a chest / that was filled with jewels.</div>
+      <div class="korean-reading">그녀는 Antonio에게 주었다 / 상자를 / 보석으로 가득 찬.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 주격 관계대명사 that (사물)</span><br>▶ <span class="gn-example">a chest that was filled with jewels</span><br>★ <span class="gn-point">'명사 + that + 동사' 구조; that이 이끄는 절이 앞의 명사를 꾸며줌</span></div>
+    </div>
+
+    <div class="text-section-label">📖 본문 3 – A Priceless Gift</div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">①</div>
+        <div class="sentence-en">Back in Italy, Antonio told his friends about his good fortune.</div></div>
+      <div class="slash-reading">Back in Italy, / Antonio told his friends / about his good fortune.</div>
+      <div class="korean-reading">이탈리아로 돌아와서, / Antonio는 친구들에게 말했다 / 자신의 행운에 대해.</div>
+      <div class="grammar-note"><span class="gn-label">◆ tell + 사람 + about + 명사</span><br>▶ <span class="gn-example">told his friends about his good fortune</span><br>★ <span class="gn-point">'tell + 사람 + about + 명사'는 '~에게 …에 대해 말하다'의 구조</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">②</div>
+        <div class="sentence-en">Luigi, the richest merchant in Genoa, heard the story and was jealous.</div></div>
+      <div class="slash-reading">Luigi, the richest merchant in Genoa, / heard the story / and was jealous.</div>
+      <div class="korean-reading">제노바에서 가장 부유한 상인인 Luigi는 / 이야기를 들었고 / 질투했다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 동격 표현 (콤마 사이 삽입구)</span><br>▶ <span class="gn-example">Luigi, the richest merchant in Genoa</span><br>★ <span class="gn-point">콤마(,) 사이에 주어를 설명하는 동격 명사구를 삽입; 최상급 the richest 확인</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">③</div>
+        <div class="sentence-en">"Cats are worthless," Luigi thought.</div></div>
+      <div class="slash-reading">"Cats are worthless," / Luigi thought.</div>
+      <div class="korean-reading">"고양이는 가치가 없어," / Luigi는 생각했다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 직접화법 인용 + 동사 도치</span><br>▶ <span class="gn-example">"Cats are worthless," Luigi thought.</span><br>★ <span class="gn-point">인용문이 문장 앞에 올 때 'said/thought + 주어'의 도치 어순 가능</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">④</div>
+        <div class="sentence-en">"I'll bring the queen what is really valuable. I'm sure that the queen will give me more jewels."</div></div>
+      <div class="slash-reading">"I'll bring the queen / what is really valuable. / I'm sure / that the queen will give me / more jewels."</div>
+      <div class="korean-reading">"나는 여왕에게 가져다 줄 거야 / 정말로 가치 있는 것을. / 나는 확신해 / 여왕이 나에게 줄 것이라고 / 더 많은 보석을."</div>
+      <div class="grammar-note"><span class="gn-label">◆ bring + 간접목적어 + what절 (4형식)</span><br>▶ <span class="gn-example">I'll bring the queen what is really valuable.</span><br>★ <span class="gn-point">4형식 동사 bring + 사람 + 물건; 직접목적어 자리에 관계대명사 what절도 가능</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑤</div>
+        <div class="sentence-en">Luigi packed his ship with wonderful paintings and other works of art.</div></div>
+      <div class="slash-reading">Luigi packed his ship / with wonderful paintings / and other works of art.</div>
+      <div class="korean-reading">Luigi는 배를 채웠다 / 훌륭한 그림들과 / 다른 예술 작품들로.</div>
+      <div class="grammar-note"><span class="gn-label">◆ pack A with B (A를 B로 채우다)</span><br>▶ <span class="gn-example">Luigi packed his ship with wonderful paintings</span><br>★ <span class="gn-point">'fill/pack/load + A + with + B'는 모두 'A를 B로 채우다'의 의미</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑥</div>
+        <div class="sentence-en">He took the gifts to the island.</div></div>
+      <div class="slash-reading">He took the gifts / to the island.</div>
+      <div class="korean-reading">그는 선물들을 가져갔다 / 섬으로.</div>
+      <div class="grammar-note"><span class="gn-label">◆ take A to B (A를 B로 가져가다)</span><br>▶ <span class="gn-example">He took the gifts to the island.</span><br>★ <span class="gn-point">'take + 목적어 + to + 장소'는 '~을 …로 가져가다/데려가다'의 구조</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑦</div>
+        <div class="sentence-en">To get a chance to meet the queen, he told the islanders a lie that he was a good friend of Antonio's.</div></div>
+      <div class="slash-reading">To get a chance to meet the queen, / he told the islanders a lie / that he was a good friend of Antonio's.</div>
+      <div class="korean-reading">여왕을 만날 기회를 얻기 위해, / 그는 섬 주민들에게 거짓말을 했다 / 자신이 Antonio의 친한 친구라는.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 동격의 that절 (명사 내용 설명)</span><br>▶ <span class="gn-example">a lie that he was a good friend of Antonio's</span><br>★ <span class="gn-point">명사(a lie) 뒤의 that절이 명사의 내용을 설명; 관계대명사 that과 달리 완전한 문장이 옴</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑧</div>
+        <div class="sentence-en">When the queen heard about Luigi, she invited him to her palace for dinner.</div></div>
+      <div class="slash-reading">When the queen heard about Luigi, / she invited him / to her palace / for dinner.</div>
+      <div class="korean-reading">여왕이 Luigi에 대해 들었을 때, / 그녀는 그를 초대했다 / 자신의 궁전으로 / 저녁 식사를 위해.</div>
+      <div class="grammar-note"><span class="gn-label">◆ invite + 목적어 + to + 장소 (초대)</span><br>▶ <span class="gn-example">she invited him to her palace for dinner</span><br>★ <span class="gn-point">'invite + 사람 + to + 장소/행사'는 '~을 …에 초대하다'의 구조</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑨</div>
+        <div class="sentence-en">Before sitting down at the table, Luigi presented the queen with all his gifts, and the queen thanked him again and again.</div></div>
+      <div class="slash-reading">Before sitting down at the table, / Luigi presented the queen / with all his gifts, / and the queen thanked him / again and again.</div>
+      <div class="korean-reading">식탁에 앉기 전에, / Luigi는 여왕에게 선물했다 / 모든 선물을, / 그리고 여왕은 그에게 감사했다 / 계속해서.</div>
+      <div class="grammar-note"><span class="gn-label">◆ Before + 동명사 (접속사 + 동명사)</span><br>▶ <span class="gn-example">Before sitting down at the table</span><br>★ <span class="gn-point">접속사 + 동명사로 주어가 같은 부사절을 간결하게 줄여 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑩</div>
+        <div class="sentence-en">"I'll repay you with a priceless gift," said the queen.</div></div>
+      <div class="slash-reading">"I'll repay you / with a priceless gift," / said the queen.</div>
+      <div class="korean-reading">"나는 당신에게 갚겠습니다 / 값을 매길 수 없는 선물로," / 여왕이 말했다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ repay A with B (A에게 B로 보답)</span><br>▶ <span class="gn-example">I'll repay you with a priceless gift</span><br>★ <span class="gn-point">priceless = 가격을 매길 수 없을 정도로 귀한; price(가격) + -less(없는)</span></div>
+    </div>
+
+    <div class="text-section-label">📖 본문 4 – A Priceless Gift</div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">①</div>
+        <div class="sentence-en">Luigi watched the queen whisper in a servant's ear.</div></div>
+      <div class="slash-reading">Luigi watched / the queen whisper / in a servant's ear.</div>
+      <div class="korean-reading">Luigi는 지켜봤다 / 여왕이 속삭이는 것을 / 하인의 귀에.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 지각동사 watch + 목적어 + 동사원형</span><br>▶ <span class="gn-example">watched the queen whisper in a servant's ear</span><br>★ <span class="gn-point">watch + 목적어 + 동사원형: 목적어가 동작 전체를 하는 것을 지켜봄</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">②</div>
+        <div class="sentence-en">He became excited and hopeful.</div></div>
+      <div class="slash-reading">He became / excited and hopeful.</div>
+      <div class="korean-reading">그는 / 흥분되고 희망적이 되었다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ become + 형용사 (상태 변화)</span><br>▶ <span class="gn-example">He became excited and hopeful.</span><br>★ <span class="gn-point">'become + 형용사'는 '~한 상태가 되다'를 의미하는 상태 변화 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">③</div>
+        <div class="sentence-en">He was sure that he would receive more jewels than Antonio.</div></div>
+      <div class="slash-reading">He was sure / that he would receive / more jewels than Antonio.</div>
+      <div class="korean-reading">그는 확신했다 / 자신이 받게 될 것이라고 / Antonio보다 더 많은 보석을.</div>
+      <div class="grammar-note"><span class="gn-label">◆ be sure that ~ (확신 표현)</span><br>▶ <span class="gn-example">He was sure that he would receive more jewels.</span><br>★ <span class="gn-point">'be sure that ~'는 '~라고 확신하다'; 비교급 more ~ than 확인</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">④</div>
+        <div class="sentence-en">After a while, the servant returned with a box, and the queen presented it to Luigi.</div></div>
+      <div class="slash-reading">After a while, / the servant returned with a box, / and the queen presented it / to Luigi.</div>
+      <div class="korean-reading">잠시 후, / 하인이 상자를 들고 돌아왔고, / 여왕은 그것을 선물했다 / Luigi에게.</div>
+      <div class="grammar-note"><span class="gn-label">◆ present A to B (A를 B에게 선물)</span><br>▶ <span class="gn-example">the queen presented it to Luigi</span><br>★ <span class="gn-point">'present + 목적어 + to + 사람'은 3형식 구조; give와 달리 공식적·격식적 뉘앙스</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑤</div>
+        <div class="sentence-en">When Luigi opened the box, he was speechless.</div></div>
+      <div class="slash-reading">When Luigi opened the box, / he was speechless.</div>
+      <div class="korean-reading">Luigi가 상자를 열었을 때, / 그는 말문이 막혔다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ speechless (말문이 막힌)</span><br>▶ <span class="gn-example">he was speechless</span><br>★ <span class="gn-point">speechless = speech(말) + -less(없는); 너무 놀라 말을 못 하는 상태</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑥</div>
+        <div class="sentence-en">There was a kitten in the box.</div></div>
+      <div class="slash-reading">There was a kitten / in the box.</div>
+      <div class="korean-reading">새끼 고양이가 있었다 / 상자 안에.</div>
+      <div class="grammar-note"><span class="gn-label">◆ There was/were ~ (존재, 과거)</span><br>▶ <span class="gn-example">There was a kitten in the box.</span><br>★ <span class="gn-point">'There is/are'의 과거형; 단수명사 → was, 복수명사 → were</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑦</div>
+        <div class="sentence-en">"Antonio gave us the priceless cats, and we now have some kittens," said the queen.</div></div>
+      <div class="slash-reading">"Antonio gave us the priceless cats, / and we now have some kittens," / said the queen.</div>
+      <div class="korean-reading">"Antonio는 우리에게 값진 고양이들을 주었고, / 우리는 이제 새끼 고양이들이 생겼어요," / 여왕이 말했다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 4형식 동사 give + 간접목적어 + 직접목적어</span><br>▶ <span class="gn-example">Antonio gave us the priceless cats</span><br>★ <span class="gn-point">give + 사람 + 물건 = give + 물건 + to + 사람 (3형식 전환 가능)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑧</div>
+        <div class="sentence-en">"In return for the wonderful gifts you gave us, we want to give you what is most valuable to us."</div></div>
+      <div class="slash-reading">"In return for the wonderful gifts / you gave us, / we want to give you / what is most valuable to us."</div>
+      <div class="korean-reading">"당신이 우리에게 준 훌륭한 선물에 대한 답례로, / 우리는 당신에게 주고 싶어요 / 우리에게 가장 가치 있는 것을."</div>
+      <div class="grammar-note"><span class="gn-label">◆ in return for ~ (~에 대한 답례로)</span><br>▶ <span class="gn-example">In return for the wonderful gifts you gave us</span><br>★ <span class="gn-point">'in return for + 명사'는 '~에 대한 답례/보답으로'의 관용 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑨</div>
+        <div class="sentence-en">Luigi realized that, in the queen's mind, the kitten was worth far more than all the jewels in the world.</div></div>
+      <div class="slash-reading">Luigi realized that, / in the queen's mind, / the kitten was worth / far more / than all the jewels in the world.</div>
+      <div class="korean-reading">Luigi는 깨달았다 / 여왕의 마음속에서 / 새끼 고양이가 가치가 있다는 것을 / 훨씬 더 / 세상의 모든 보석보다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ be worth + 명사 (가치 있다)</span><br>▶ <span class="gn-example">the kitten was worth far more than all the jewels</span><br>★ <span class="gn-point">'be worth + 명사'는 '~의 가치가 있다'; far는 비교급 강조 부사(훨씬)</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑩</div>
+        <div class="sentence-en">He tried to look pleased with the gift.</div></div>
+      <div class="slash-reading">He tried to look pleased / with the gift.</div>
+      <div class="korean-reading">그는 기쁜 척 보이려고 했다 / 선물에 대해.</div>
+      <div class="grammar-note"><span class="gn-label">◆ try to + 동사원형 (노력/시도)</span><br>▶ <span class="gn-example">He tried to look pleased with the gift.</span><br>★ <span class="gn-point">'try to + 동사원형'은 '~하려고 노력하다'; try + 동명사(~을 시험 삼아 해보다)와 구별</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑪</div>
+        <div class="sentence-en">He knew that was the right thing to do.</div></div>
+      <div class="slash-reading">He knew / that was the right thing / to do.</div>
+      <div class="korean-reading">그는 알았다 / 그것이 올바른 행동임을.</div>
+      <div class="grammar-note"><span class="gn-label">◆ the right thing to do (해야 할 올바른 일)</span><br>▶ <span class="gn-example">the right thing to do</span><br>★ <span class="gn-point">to부정사가 명사(thing) 뒤에서 수식하는 형용사적 용법</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑫</div>
+        <div class="sentence-en">Luigi did not return home a richer man. But he was surely a wiser one.</div></div>
+      <div class="slash-reading">Luigi did not return home / a richer man. / But he was surely / a wiser one.</div>
+      <div class="korean-reading">Luigi는 집으로 돌아오지 않았다 / 더 부유한 사람으로. / 하지만 그는 분명히 / 더 현명한 사람이 되었다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 목적보어 역할의 명사구</span><br>▶ <span class="gn-example">return home a richer man</span><br>★ <span class="gn-point">'return/come home + 명사'는 '~한 상태로 돌아오다'; one = man의 반복 회피 대명사</span></div>
+    </div>
+
+  </div><!-- /t1 -->
+
+  <!-- ② 핵심단어 -->
+  <div class="tab-content" id="l1-t2">
+    <div class="vocab-grid">
+      <div class="vocab-card"><div class="vocab-word">merchant</div><div class="vocab-meta"><span class="pos">n.</span>상인, 무역상</div><div class="vocab-example">The merchant sold silk in the market. (상인은 시장에서 비단을 팔았다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">honest</div><div class="vocab-meta"><span class="pos">adj.</span>정직한</div><div class="vocab-example">She is an honest person who never lies. (그녀는 거짓말을 하지 않는 정직한 사람이다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">trade</div><div class="vocab-meta"><span class="pos">v.</span>교환하다, 무역하다</div><div class="vocab-example">They traded fish for bread. (그들은 생선을 빵과 교환했다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">puzzled</div><div class="vocab-meta"><span class="pos">adj.</span>당혹스러운, 어리둥절한</div><div class="vocab-example">He looked puzzled by the strange question. (그는 이상한 질문에 당혹스러워 보였다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">fortune</div><div class="vocab-meta"><span class="pos">n.</span>행운, 재산</div><div class="vocab-example">He made a fortune by selling real estate. (그는 부동산을 팔아 큰 재산을 모았다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">jealous</div><div class="vocab-meta"><span class="pos">adj.</span>질투하는, 부러워하는</div><div class="vocab-example">She was jealous of her friend's success. (그녀는 친구의 성공을 질투했다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">worthless</div><div class="vocab-meta"><span class="pos">adj.</span>가치 없는</div><div class="vocab-example">The old coin turned out to be worthless. (그 오래된 동전은 가치 없는 것으로 판명됐다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">valuable</div><div class="vocab-meta"><span class="pos">adj.</span>귀중한, 가치 있는</div><div class="vocab-example">Time is the most valuable thing we have. (시간은 우리가 가진 가장 귀중한 것이다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">priceless</div><div class="vocab-meta"><span class="pos">adj.</span>값을 매길 수 없는</div><div class="vocab-example">This painting is a priceless treasure. (이 그림은 값을 매길 수 없는 보물이다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">speechless</div><div class="vocab-meta"><span class="pos">adj.</span>말문이 막힌</div><div class="vocab-example">She was speechless when she heard the news. (그녀는 그 소식을 듣고 말문이 막혔다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">realize</div><div class="vocab-meta"><span class="pos">v.</span>깨닫다</div><div class="vocab-example">He realized he had made a mistake. (그는 자신이 실수했다는 것을 깨달았다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">repay</div><div class="vocab-meta"><span class="pos">v.</span>갚다, 보답하다</div><div class="vocab-example">I will repay your kindness someday. (언젠가 당신의 친절에 보답할게요.)</div></div>
+    </div>
+    <div class="expr-section-title">📌 주요 표현 및 숙어</div>
+    <div class="expr-card"><div class="expr-phrase">have ~ in mind</div><div class="expr-meaning">~을 생각하다, 염두에 두다</div><div class="expr-usage">Which school do you have in mind? (어떤 학교를 생각하고 있어?)</div></div>
+    <div class="expr-card"><div class="expr-phrase">You can say that again.</div><div class="expr-meaning">정말 그렇지. (강한 동의)</div><div class="expr-usage">A: It's so hot today. B: You can say that again! (정말!)</div></div>
+    <div class="expr-card"><div class="expr-phrase">get over</div><div class="expr-meaning">~을 극복하다, 이겨내다</div><div class="expr-usage">She needs time to get over her sadness. (그녀는 슬픔을 극복할 시간이 필요하다.)</div></div>
+    <div class="expr-card"><div class="expr-phrase">have two left feet</div><div class="expr-meaning">몸치이다, 춤을 못 추다</div><div class="expr-usage">Don't ask me to dance — I have two left feet! (나 완전 몸치야!)</div></div>
+    <div class="expr-card"><div class="expr-phrase">not A but B</div><div class="expr-meaning">A가 아니라 B</div><div class="expr-usage">What they need is not money, but love. (그들에게 필요한 것은 돈이 아니라 사랑이다.)</div></div>
+    <div class="expr-card"><div class="expr-phrase">in return for ~</div><div class="expr-meaning">~에 대한 답례/보답으로</div><div class="expr-usage">In return for your help, I'll buy you lunch. (도움에 대한 답례로 점심을 살게.)</div></div>
+  </div><!-- /t2 -->
+
+  <!-- ③ 주요문법 -->
+  <div class="tab-content" id="l1-t3">
+    <div class="grammar-section">
+      <h3>① 사역동사 – let / make / have + 목적어 + 동사원형</h3>
+      <div class="grammar-desc">사역동사는 '~가 …하도록 시키다/허락하다'는 뜻으로, 목적어 뒤에 반드시 <strong>동사원형</strong>을 씁니다.<br>• <strong>let</strong>: 허락하여 ~하게 하다 &nbsp;• <strong>make</strong>: 강제로 ~하게 하다 &nbsp;• <strong>have</strong>: 역할로 ~하게 하다</div>
+      <div class="grammar-example-box">He brought two cats and <strong>let</strong> them <strong>run</strong> free. (허락)<br>"What amazing animals!" cried the queen when she <strong>saw</strong> all the rats <strong>run</strong> away. (지각동사)</div>
+      <div class="grammar-extra">추가 예문:<br>• My mom <strong>made</strong> me <strong>clean</strong> my room. (강제)<br>• She <strong>had</strong> her son <strong>carry</strong> the bags. (역할 부여)</div>
+    </div>
+    <div class="grammar-section">
+      <h3>② 관계대명사 what – '~하는 것'</h3>
+      <div class="grammar-desc">관계대명사 <strong>what</strong>은 선행사를 포함하여 '~하는 것'의 의미로, 명사절을 이끕니다. 주어·목적어·보어 자리에 올 수 있습니다.<br>비교: <strong>that</strong>은 앞에 선행사가 있어야 하지만, <strong>what</strong>은 선행사 없이 단독으로 씁니다.</div>
+      <div class="grammar-example-box">The islanders could get <strong>what</strong> they needed. (목적어)<br><strong>What</strong> the islanders need is not tools, but cats. (주어)<br>I'll bring the queen <strong>what</strong> is really valuable. (직접목적어)</div>
+      <div class="grammar-extra">추가 예문:<br>• Tell me <strong>what</strong> you want. (네가 원하는 것을 말해.)<br>• <strong>What</strong> she said was true. (그녀가 말한 것은 사실이었다.)</div>
+    </div>
+    <div class="grammar-section">
+      <h3>③ 동격의 that절 – '~라는 (명사)'</h3>
+      <div class="grammar-desc">명사 뒤에 <strong>that절</strong>이 와서 그 명사의 내용을 구체적으로 설명합니다. 자주 쓰이는 명사: fact, idea, news, belief, lie, hope, chance 등.<br>⚠ 관계대명사 that과 달리, 동격의 that절은 <strong>완전한 문장</strong>이 옵니다.</div>
+      <div class="grammar-example-box">he told the islanders a lie <strong>that</strong> he was a good friend of Antonio's.<br>→ 자신이 Antonio의 친한 친구라는 거짓말</div>
+      <div class="grammar-extra">추가 예문:<br>• I heard the news <strong>that</strong> she won the contest.<br>• The fact <strong>that</strong> he lied upset me.</div>
+    </div>
+  </div><!-- /t3 -->
+
+  <!-- ④ 문법연습 -->
+  <div class="tab-content" id="l1-t4">
+    <div class="quiz-block" id="l1q1">
+      <span class="quiz-num">Q1</span><span class="quiz-type-badge">빈칸 채우기</span>
+      <div class="quiz-q">사역동사를 이용해 빈칸을 완성하세요.<br>My teacher _____ us _____ the poem again. (make / read)</div>
+      <div class="fill-blank-area"><span>My teacher</span><input class="fill-input" id="l1q1a" placeholder="동사"><span>us</span><input class="fill-input" id="l1q1b" placeholder="동사원형"><span>the poem again.</span></div>
+      <div class="quiz-actions"><button class="check-btn" onclick="checkFill('l1q1',['made','read'])">확인</button><button class="reset-btn" onclick="resetFill('l1q1')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l1q1-fb"></div>
+      <div class="quiz-explanation">💡 사역동사 make의 과거형 made + 목적어 us + 동사원형 read</div>
+    </div>
+    <div class="quiz-block" id="l1q2">
+      <span class="quiz-num">Q2</span><span class="quiz-type-badge">선다형</span>
+      <div class="quiz-q">다음 중 밑줄 친 부분의 쓰임이 나머지와 <u>다른</u> 것은?</div>
+      <div class="options">
+        <button class="opt-btn" onclick="checkOpt('l1q2',this,false)">① She got <u>what</u> she wanted.</button>
+        <button class="opt-btn" onclick="checkOpt('l1q2',this,false)">② Tell me <u>what</u> happened.</button>
+        <button class="opt-btn" onclick="checkOpt('l1q2',this,true)">③ The book <u>that</u> she bought was expensive.</button>
+        <button class="opt-btn" onclick="checkOpt('l1q2',this,false)">④ <u>What</u> he said surprised me.</button>
+      </div>
+      <div class="quiz-actions"><button class="reset-btn" onclick="resetOpt('l1q2')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l1q2-fb"></div>
+      <div class="quiz-explanation">💡 ①②④는 관계대명사 what(선행사 포함), ③의 that은 선행사(The book)가 있는 관계대명사</div>
+    </div>
+    <div class="quiz-block" id="l1q3">
+      <span class="quiz-num">Q3</span><span class="quiz-type-badge">틀린 곳 고치기</span>
+      <div class="quiz-q">다음 문장에서 밑줄 친 부분 중 <u>틀린 것</u>을 고르세요.<br>She <u>①let</u> her dog <u>②to run</u> in the park <u>③every</u> <u>④morning</u>.</div>
+      <div class="options">
+        <button class="opt-btn" onclick="checkOpt('l1q3',this,false)">① let</button>
+        <button class="opt-btn" onclick="checkOpt('l1q3',this,true)">② to run → run</button>
+        <button class="opt-btn" onclick="checkOpt('l1q3',this,false)">③ every</button>
+        <button class="opt-btn" onclick="checkOpt('l1q3',this,false)">④ morning</button>
+      </div>
+      <div class="quiz-actions"><button class="reset-btn" onclick="resetOpt('l1q3')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l1q3-fb"></div>
+      <div class="quiz-explanation">💡 사역동사 let 뒤에는 to부정사가 아닌 동사원형: let her dog run</div>
+    </div>
+    <div class="quiz-block" id="l1q4">
+      <span class="quiz-num">Q4</span><span class="quiz-type-badge">빈칸 채우기</span>
+      <div class="quiz-q">관계대명사를 이용해 빈칸을 채우세요.<br>"_____ the islanders need is not tools, but cats."</div>
+      <div class="fill-blank-area"><input class="fill-input" id="l1q4a" placeholder="관계대명사"><span>the islanders need is not tools, but cats.</span></div>
+      <div class="quiz-actions"><button class="check-btn" onclick="checkFill('l1q4',['what'])">확인</button><button class="reset-btn" onclick="resetFill('l1q4')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l1q4-fb"></div>
+      <div class="quiz-explanation">💡 선행사 없이 '~하는 것'을 나타낼 때는 관계대명사 what 사용</div>
+    </div>
+    <div class="quiz-block" id="l1q5">
+      <span class="quiz-num">Q5</span><span class="quiz-type-badge">선다형</span>
+      <div class="quiz-q">빈칸에 들어갈 알맞은 것을 고르세요.<br>"I heard the news _____ she passed the exam."</div>
+      <div class="options">
+        <button class="opt-btn" onclick="checkOpt('l1q5',this,false)">① which</button>
+        <button class="opt-btn" onclick="checkOpt('l1q5',this,true)">② that</button>
+        <button class="opt-btn" onclick="checkOpt('l1q5',this,false)">③ what</button>
+        <button class="opt-btn" onclick="checkOpt('l1q5',this,false)">④ who</button>
+      </div>
+      <div class="quiz-actions"><button class="reset-btn" onclick="resetOpt('l1q5')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l1q5-fb"></div>
+      <div class="quiz-explanation">💡 'the news that ~'에서 that은 앞 명사의 내용을 설명하는 동격의 접속사</div>
+    </div>
+    <div class="quiz-block" id="l1q6">
+      <span class="quiz-num">Q6</span><span class="quiz-type-badge">문장 완성하기</span>
+      <div class="quiz-q">주어진 단어를 올바른 순서로 배열하세요.<br>[ the / need / what / you / is / rest ]</div>
+      <div class="fill-blank-area"><input class="fill-input" id="l1q6a" placeholder="완성된 문장" style="min-width:220px"></div>
+      <div class="quiz-actions"><button class="check-btn" onclick="checkFill('l1q6',['what you need is rest'])">확인</button><button class="reset-btn" onclick="resetFill('l1q6')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l1q6-fb"></div>
+      <div class="quiz-explanation">💡 What you need is rest. — what절이 주어, is가 동사, rest가 보어</div>
+    </div>
+  </div><!-- /t4 -->
+
+  <!-- ⑤ 본문이해 -->
+  <div class="tab-content" id="l1-t5">
+    <div class="quiz-block" id="l1c1"><span class="quiz-num">C1</span><span class="quiz-type-badge">T/F</span>
+      <div class="quiz-q">"Antonio traded books for tools on the faraway island."</div>
+      <div class="tf-options"><button class="tf-btn" onclick="checkTF('l1c1',this,false)">T</button><button class="tf-btn" onclick="checkTF('l1c1',this,true)">F</button></div>
+      <div class="quiz-actions"><button class="reset-btn" onclick="resetTF('l1c1')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l1c1-fb"></div>
+      <div class="quiz-explanation">💡 본문: tools→spices, books→nuts로 교환 (books↔tools 아님)</div>
+    </div>
+    <div class="quiz-block" id="l1c2"><span class="quiz-num">C2</span><span class="quiz-type-badge">T/F</span>
+      <div class="quiz-q">"The queen of the island had never seen a cat before."</div>
+      <div class="tf-options"><button class="tf-btn" onclick="checkTF('l1c2',this,true)">T</button><button class="tf-btn" onclick="checkTF('l1c2',this,false)">F</button></div>
+      <div class="quiz-actions"><button class="reset-btn" onclick="resetTF('l1c2')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l1c2-fb"></div>
+      <div class="quiz-explanation">💡 여왕이 "What is a cat?"이라고 물음 → 고양이를 전혀 몰랐음</div>
+    </div>
+    <div class="quiz-block" id="l1c3"><span class="quiz-num">C3</span><span class="quiz-type-badge">T/F</span>
+      <div class="quiz-q">"Luigi was an honest merchant who was Antonio's real friend."</div>
+      <div class="tf-options"><button class="tf-btn" onclick="checkTF('l1c3',this,false)">T</button><button class="tf-btn" onclick="checkTF('l1c3',this,true)">F</button></div>
+      <div class="quiz-actions"><button class="reset-btn" onclick="resetTF('l1c3')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l1c3-fb"></div>
+      <div class="quiz-explanation">💡 Luigi는 Antonio의 친구라고 거짓말을 했으며, 질투심 많은 상인임</div>
+    </div>
+    <div class="quiz-block" id="l1c4"><span class="quiz-num">C4</span><span class="quiz-type-badge">객관식</span>
+      <div class="quiz-q">여왕이 Antonio에게 준 선물은 무엇인가?</div>
+      <div class="options">
+        <button class="opt-btn" onclick="checkOpt('l1c4',this,false)">① 황금으로 만든 왕관</button>
+        <button class="opt-btn" onclick="checkOpt('l1c4',this,true)">② 보석이 가득 찬 상자</button>
+        <button class="opt-btn" onclick="checkOpt('l1c4',this,false)">③ 새끼 고양이 두 마리</button>
+        <button class="opt-btn" onclick="checkOpt('l1c4',this,false)">④ 훌륭한 그림들</button>
+      </div>
+      <div class="quiz-actions"><button class="reset-btn" onclick="resetOpt('l1c4')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l1c4-fb"></div>
+      <div class="quiz-explanation">💡 'She gave Antonio a chest that was filled with jewels'</div>
+    </div>
+    <div class="quiz-block" id="l1c5"><span class="quiz-num">C5</span><span class="quiz-type-badge">객관식</span>
+      <div class="quiz-q">Luigi가 여왕에게 받은 선물은 무엇이었는가?</div>
+      <div class="options">
+        <button class="opt-btn" onclick="checkOpt('l1c5',this,false)">① 보석 상자</button>
+        <button class="opt-btn" onclick="checkOpt('l1c5',this,false)">② 황금 조각품</button>
+        <button class="opt-btn" onclick="checkOpt('l1c5',this,true)">③ 새끼 고양이</button>
+        <button class="opt-btn" onclick="checkOpt('l1c5',this,false)">④ 향신료 자루</button>
+      </div>
+      <div class="quiz-actions"><button class="reset-btn" onclick="resetOpt('l1c5')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l1c5-fb"></div>
+      <div class="quiz-explanation">💡 'There was a kitten in the box'</div>
+    </div>
+    <div class="quiz-block" id="l1c6"><span class="quiz-num">C6</span><span class="quiz-type-badge">순서 배열</span>
+      <div class="quiz-q">다음 사건들을 이야기 순서에 맞게 배열하세요.<br>(가) Luigi가 섬에 그림과 예술품을 가져갔다.<br>(나) Antonio가 고양이 두 마리를 여왕에게 선물했다.<br>(다) Luigi가 상자 안에서 새끼 고양이를 발견했다.<br>(라) Antonio가 여왕의 궁전에서 저녁을 먹었다.</div>
+      <div class="options">
+        <button class="opt-btn" onclick="checkOpt('l1c6',this,false)">① 나 → 라 → 가 → 다</button>
+        <button class="opt-btn" onclick="checkOpt('l1c6',this,true)">② 라 → 나 → 가 → 다</button>
+        <button class="opt-btn" onclick="checkOpt('l1c6',this,false)">③ 가 → 나 → 라 → 다</button>
+        <button class="opt-btn" onclick="checkOpt('l1c6',this,false)">④ 라 → 가 → 나 → 다</button>
+      </div>
+      <div class="quiz-actions"><button class="reset-btn" onclick="resetOpt('l1c6')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l1c6-fb"></div>
+      <div class="quiz-explanation">💡 라(저녁 식사·쥐 목격) → 나(고양이 선물·보석 받음) → 가(Luigi 방문) → 다(새끼 고양이 받음)</div>
+    </div>
+    <div class="quiz-block" id="l1c7"><span class="quiz-num">C7</span><span class="quiz-type-badge">빈칸 완성</span>
+      <div class="quiz-q">본문 내용에 맞게 빈칸을 채우세요.<br>"Luigi did not return home a _____ man. But he was surely a _____ one."</div>
+      <div class="fill-blank-area"><input class="fill-input" id="l1c7a" placeholder="첫번째"><input class="fill-input" id="l1c7b" placeholder="두번째"></div>
+      <div class="quiz-actions"><button class="check-btn" onclick="checkFill('l1c7',['richer','wiser'])">확인</button><button class="reset-btn" onclick="resetFill('l1c7')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l1c7-fb"></div>
+      <div class="quiz-explanation">💡 본문 마지막 문장: richer(더 부유한) / wiser(더 현명한)</div>
+    </div>
+  </div><!-- /t5 -->
+
+  <!-- ⑥ 서술형 -->
+  <div class="tab-content" id="l1-t6">
+    <div class="essay-block">
+      <h4>서술형 1</h4>
+      <div class="essay-condition">📌 조건: 본문의 내용을 바탕으로, <strong>Luigi가 결국 무엇을 깨달았는지</strong>를 한국어로 서술하시오. (3문장 이내)</div>
+      <div class="answer-lines"><input class="answer-line" type="text" placeholder="답안을 작성하세요..."><input class="answer-line" type="text" placeholder=""><input class="answer-line" type="text" placeholder=""></div>
+      <button class="toggle-answer-btn" onclick="toggleAnswer(this)">📋 모범답안 보기</button>
+      <div class="model-answer">Luigi는 여왕에게 비싼 그림과 예술품을 선물했지만, 여왕은 그에게 새끼 고양이를 주었다. Luigi는 여왕의 마음속에서 새끼 고양이가 세상의 모든 보석보다 훨씬 더 가치 있다는 것을 깨달았다. 그는 더 부유해지지는 않았지만, 분명히 더 현명한 사람이 되어 돌아갔다.</div>
+    </div>
+    <div class="essay-block">
+      <h4>서술형 2</h4>
+      <div class="essay-condition">📌 조건: 아래 우리말을 영어로 쓰시오. <strong>사역동사 let을 사용하고 30단어 내외</strong>로 작성하시오.<br>"Antonio는 두 마리의 고양이를 배에서 데려와서, 그것들이 궁전 안에서 자유롭게 돌아다니게 했다. 고양이들은 즉시 모든 쥐들을 쫓아냈다."</div>
+      <div class="answer-lines"><input class="answer-line" type="text" placeholder="답안을 작성하세요..."><input class="answer-line" type="text" placeholder=""><input class="answer-line" type="text" placeholder=""></div>
+      <button class="toggle-answer-btn" onclick="toggleAnswer(this)">📋 모범답안 보기</button>
+      <div class="model-answer">Antonio brought two cats from his ship and let them run free in the palace. The cats immediately chased away all the rats.</div>
+    </div>
+  </div><!-- /t6 -->
+
+  <!-- ⑦ 정답지 -->
+  <div class="tab-content" id="l1-t7">
+    <div class="answer-key-section"><h3>④ 문법 연습문제 정답</h3>
+      <ul class="answer-list">
+        <li><strong>Q1</strong> <span class="ans">made / read</span> — 사역동사 make의 과거형 + 동사원형</li>
+        <li><strong>Q2</strong> <span class="ans">③</span> — ③의 that은 관계대명사(선행사 있음), 나머지는 what</li>
+        <li><strong>Q3</strong> <span class="ans">② to run → run</span> — 사역동사 let 뒤 동사원형</li>
+        <li><strong>Q4</strong> <span class="ans">What</span> — 선행사 없이 '~하는 것'을 나타내는 관계대명사 what</li>
+        <li><strong>Q5</strong> <span class="ans">② that</span> — 동격의 that절</li>
+        <li><strong>Q6</strong> <span class="ans">What you need is rest.</span></li>
+      </ul>
+    </div>
+    <div class="answer-key-section"><h3>⑤ 본문이해 문제 정답</h3>
+      <ul class="answer-list">
+        <li><strong>C1</strong> <span class="ans">F</span> — tools→spices, books→nuts</li>
+        <li><strong>C2</strong> <span class="ans">T</span> — "What is a cat?"</li>
+        <li><strong>C3</strong> <span class="ans">F</span> — Luigi는 거짓말로 Antonio의 친구라고 주장</li>
+        <li><strong>C4</strong> <span class="ans">② 보석이 가득 찬 상자</span></li>
+        <li><strong>C5</strong> <span class="ans">③ 새끼 고양이</span></li>
+        <li><strong>C6</strong> <span class="ans">② 라 → 나 → 가 → 다</span></li>
+        <li><strong>C7</strong> <span class="ans">richer / wiser</span></li>
+      </ul>
+    </div>
+    <div class="answer-key-section"><h3>⑥ 서술형 모범답안</h3>
+      <ul class="answer-list">
+        <li><strong>서술형 1</strong> <span class="ans">Luigi는 여왕의 마음속에서 새끼 고양이가 세상의 모든 보석보다 훨씬 더 가치 있다는 것을 깨달았다. 그는 더 부유해지지는 않았지만, 더 현명한 사람이 되었다.</span></li>
+        <li><strong>서술형 2</strong> <span class="ans">Antonio brought two cats from his ship and let them run free in the palace. The cats immediately chased away all the rats.</span></li>
+      </ul>
+    </div>
+  </div><!-- /t7 -->
+
+</div><!-- /lesson-panel l1 -->
+<!-- ════════════════════════════════════════
+     LESSON 2  (완전판)
+════════════════════════════════════════ -->
+<div class="lesson-panel" id="l2">
+  <div class="lesson-header">
+    <div class="pub-badge">천재(이재영) · 중학교 3학년</div>
+    <h1>Lesson 2 · <em>The Amazing Ants</em></h1>
+    <div class="lesson-meta">대화문 3개 · 본문 4파트 + Fun Facts · 핵심문법 3개</div>
+  </div>
+
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="showTab('l2','t1')">① 본문분석</button>
+    <button class="tab-btn" onclick="showTab('l2','t2')">② 핵심단어</button>
+    <button class="tab-btn" onclick="showTab('l2','t3')">③ 주요문법</button>
+    <button class="tab-btn" onclick="showTab('l2','t4')">④ 문법연습</button>
+    <button class="tab-btn" onclick="showTab('l2','t5')">⑤ 본문이해</button>
+    <button class="tab-btn" onclick="showTab('l2','t6')">⑥ 서술형</button>
+    <button class="tab-btn" onclick="showTab('l2','t7')">⑦ 정답지</button>
+  </div>
+
+  <!-- ① 본문분석 -->
+  <div class="tab-content active" id="l2-t1">
+
+    <div class="text-section-label">📢 대화문 1</div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">①</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> Amber, how do you like the camp?</div></div>
+      <div class="slash-reading">Amber, / how do you like / the camp?</div>
+      <div class="korean-reading">Amber, / 캠프가 어때? / (캠프를 어떻게 생각해?)</div>
+      <div class="grammar-note"><span class="gn-label">◆ How do you like ~? (~이 어때?)</span><br>▶ <span class="gn-example">How do you like the camp?</span><br>★ <span class="gn-point">'How do you like + 명사?'는 어떤 것에 대한 의견/만족도를 묻는 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">②</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> It's great. I'm having a lot of fun.</div></div>
+      <div class="slash-reading">It's great. / I'm having / a lot of fun.</div>
+      <div class="korean-reading">정말 좋아. / 나는 즐기고 있어 / 정말 많이.</div>
+      <div class="grammar-note"><span class="gn-label">◆ have fun (즐기다)</span><br>▶ <span class="gn-example">I'm having a lot of fun.</span><br>★ <span class="gn-point">'have fun'은 '즐기다'; 현재진행형으로 지금 이 순간 즐기고 있음을 강조</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">③</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> Me, too. The talent show last night was really great.</div></div>
+      <div class="slash-reading">Me, too. / The talent show last night / was really great.</div>
+      <div class="korean-reading">나도. / 어젯밤 장기자랑 / 정말 대단했어.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 시간 명사구 후치 수식 (last night)</span><br>▶ <span class="gn-example">The talent show last night</span><br>★ <span class="gn-point">명사 뒤에 시간 표현이 와서 명사를 수식하는 후치 수식어구</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">④</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> Yeah. By the way, did you decide on the afternoon program?</div></div>
+      <div class="slash-reading">Yeah. / By the way, / did you decide on / the afternoon program?</div>
+      <div class="korean-reading">응. / 그런데, / 너 결정했어 / 오후 프로그램을?</div>
+      <div class="grammar-note"><span class="gn-label">◆ By the way (화제 전환) / decide on (~을 결정하다)</span><br>▶ <span class="gn-example">By the way, did you decide on the afternoon program?</span><br>★ <span class="gn-point">'By the way'는 화제를 바꿀 때 쓰는 표현; 'decide on'은 '~을 결정하다'</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑤</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> No, I haven't yet. Which do you think is better, hiking or swimming?</div></div>
+      <div class="slash-reading">No, I haven't yet. / Which do you think is better, / hiking or swimming?</div>
+      <div class="korean-reading">아니, 아직 못 했어. / 어느 게 더 낫다고 생각해, / 하이킹 아니면 수영?</div>
+      <div class="grammar-note"><span class="gn-label">◆ Which do you think is ~? (삽입된 간접의문문)</span><br>▶ <span class="gn-example">Which do you think is better?</span><br>★ <span class="gn-point">'do you think'가 삽입된 간접의문문; 어순: 의문사 + do you think + 주어 + 동사</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑥</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> I'll go hiking because we can see wild birds and insects in the woods.</div></div>
+      <div class="slash-reading">I'll go hiking / because we can see / wild birds and insects / in the woods.</div>
+      <div class="korean-reading">나는 하이킹을 할 거야 / 우리가 볼 수 있어서 / 야생 새와 곤충을 / 숲에서.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 접속사 because (이유)</span><br>▶ <span class="gn-example">I'll go hiking because we can see wild birds.</span><br>★ <span class="gn-point">'because + 주어 + 동사'로 이유를 나타냄; go hiking = 하이킹하러 가다</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑦</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> I'll join you. I like birds and insects.</div></div>
+      <div class="slash-reading">I'll join you. / I like birds and insects.</div>
+      <div class="korean-reading">같이 갈게. / 나는 새와 곤충을 좋아해.</div>
+      <div class="grammar-note"><span class="gn-label">◆ join + 목적어 (합류하다)</span><br>▶ <span class="gn-example">I'll join you.</span><br>★ <span class="gn-point">'join + 사람'은 '~와 합류하다, 같이 하다'의 의미</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑧</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> Great. I heard we'll have a hiking guide.</div></div>
+      <div class="slash-reading">Great. / I heard / we'll have a hiking guide.</div>
+      <div class="korean-reading">좋아. / 나는 들었어 / 우리에게 하이킹 가이드가 생길 거라고.</div>
+      <div class="grammar-note"><span class="gn-label">◆ hear + that절 (간접화법)</span><br>▶ <span class="gn-example">I heard (that) we'll have a hiking guide.</span><br>★ <span class="gn-point">that이 생략된 간접화법; 지각동사 hear 뒤에 that절이 목적어로 옴</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑨</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> Sounds good.</div></div>
+      <div class="slash-reading">Sounds good.</div>
+      <div class="korean-reading">좋은데. / (그것 참 좋겠는데.)</div>
+      <div class="grammar-note"><span class="gn-label">◆ 관용 표현: Sounds good. (좋은데.)</span><br>▶ <span class="gn-example">Sounds good.</span><br>★ <span class="gn-point">'That sounds good.'에서 주어 That이 생략된 구어체 표현; 동의/긍정 반응</span></div>
+    </div>
+
+    <div class="text-section-label">📢 대화문 2</div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">①</div>
+        <div class="sentence-en"><span class="speaker-name">W:</span> Everyone, look at this chestnut tree. This is the oldest tree in these woods.</div></div>
+      <div class="slash-reading">Everyone, look at this chestnut tree. / This is the oldest tree / in these woods.</div>
+      <div class="korean-reading">여러분, 이 밤나무를 보세요. / 이것이 가장 오래된 나무입니다 / 이 숲에서.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 최상급: the + 형용사-est + in + 범위</span><br>▶ <span class="gn-example">the oldest tree in these woods</span><br>★ <span class="gn-point">'the + 형용사-est + in/of + 범위'로 '가장 ~한'을 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">②</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> Can you tell me how old it is?</div></div>
+      <div class="slash-reading">Can you tell me / how old it is?</div>
+      <div class="korean-reading">말해줄 수 있어요 / 그게 얼마나 오래됐는지?</div>
+      <div class="grammar-note"><span class="gn-label">◆ 간접의문문: 의문사 + 주어 + 동사</span><br>▶ <span class="gn-example">Can you tell me how old it is?</span><br>★ <span class="gn-point">간접의문문 어순: how old + 주어(it) + 동사(is) — 직접의문문(How old is it?)과 어순 차이</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">③</div>
+        <div class="sentence-en"><span class="speaker-name">W:</span> It's about 150 years old.</div></div>
+      <div class="slash-reading">It's about / 150 years old.</div>
+      <div class="korean-reading">약 / 150년 됐어요.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 숫자 + years old (나이/연수 표현)</span><br>▶ <span class="gn-example">It's about 150 years old.</span><br>★ <span class="gn-point">'숫자 + years old'로 나이(연수) 표현; about은 '약, 대략'을 뜻하는 부사</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">④</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> Wow! It's ten times my age.</div></div>
+      <div class="slash-reading">Wow! / It's ten times my age.</div>
+      <div class="korean-reading">와! / 그건 내 나이의 열 배야.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 배수 표현: 숫자 + times + 명사</span><br>▶ <span class="gn-example">It's ten times my age.</span><br>★ <span class="gn-point">'숫자 + times + 명사'로 배수 표현; twice = 2배, three times = 3배</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑤</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> Ms. Oh, is that a beehive up in the tree?</div></div>
+      <div class="slash-reading">Ms. Oh, / is that a beehive / up in the tree?</div>
+      <div class="korean-reading">오 선생님, / 저게 벌집인가요 / 나무 위에?</div>
+      <div class="grammar-note"><span class="gn-label">◆ 장소 부사구 후치 수식 (up in the tree)</span><br>▶ <span class="gn-example">a beehive up in the tree</span><br>★ <span class="gn-point">부사구 'up in the tree'가 명사(beehive) 뒤에서 위치를 설명하며 수식</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑥</div>
+        <div class="sentence-en"><span class="speaker-name">W:</span> Yes. Can you guess how many bees live there?</div></div>
+      <div class="slash-reading">Yes. / Can you guess / how many bees live there?</div>
+      <div class="korean-reading">네. / 맞혀볼 수 있어요 / 거기에 몇 마리의 벌이 사는지?</div>
+      <div class="grammar-note"><span class="gn-label">◆ 간접의문문: how many + 명사 + 주어 + 동사</span><br>▶ <span class="gn-example">how many bees live there</span><br>★ <span class="gn-point">'how many + 복수명사 + 주어 + 동사'로 수량을 묻는 간접의문문 구조</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑦</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> 500 bees?</div></div>
+      <div class="slash-reading">500 bees?</div>
+      <div class="korean-reading">500마리요?</div>
+      <div class="grammar-note"><span class="gn-label">◆ 구어체 단문 (생략)</span><br>▶ <span class="gn-example">500 bees? (= Are there 500 bees?)</span><br>★ <span class="gn-point">대화에서는 문맥상 명확한 경우 주어 + 동사를 생략하여 단문으로 표현 가능</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑧</div>
+        <div class="sentence-en"><span class="speaker-name">W:</span> Good guess, but it's big enough to hold over 50,000 bees.</div></div>
+      <div class="slash-reading">Good guess, / but it's big enough / to hold over 50,000 bees.</div>
+      <div class="korean-reading">잘 맞혔어요, / 하지만 그것은 충분히 커요 / 5만 마리 이상의 벌을 수용할 정도로.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 형용사 + enough + to부정사</span><br>▶ <span class="gn-example">big enough to hold over 50,000 bees</span><br>★ <span class="gn-point">'형용사 + enough + to부정사': ~할 만큼 충분히 …하다; too ~ to(너무 ~해서 …못하다)와 반대</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑨</div>
+        <div class="sentence-en"><span class="speaker-name">B, G:</span> Unbelievable!</div></div>
+      <div class="slash-reading">Unbelievable!</div>
+      <div class="korean-reading">믿을 수가 없어요!</div>
+      <div class="grammar-note"><span class="gn-label">◆ 형용사 단독 감탄 표현</span><br>▶ <span class="gn-example">Unbelievable! (= That is unbelievable!)</span><br>★ <span class="gn-point">강한 감정·놀라움을 표현할 때 형용사만으로 감탄문처럼 사용; un-(부정) + believe + -able(가능)</span></div>
+    </div>
+
+    <div class="text-section-label">📢 대화문 3</div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">①</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> Sora, can you take a look at these pictures?</div></div>
+      <div class="slash-reading">Sora, / can you take a look / at these pictures?</div>
+      <div class="korean-reading">Sora, / 좀 볼 수 있어 / 이 사진들을?</div>
+      <div class="grammar-note"><span class="gn-label">◆ take a look at (~을 살펴보다)</span><br>▶ <span class="gn-example">Can you take a look at these pictures?</span><br>★ <span class="gn-point">'take a look at'은 'look at'보다 정중하게 '~을 살펴보다'는 뜻</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">②</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> What are these for?</div></div>
+      <div class="slash-reading">What are these for?</div>
+      <div class="korean-reading">이것들은 무엇을 위한 건이야?</div>
+      <div class="grammar-note"><span class="gn-label">◆ What is/are ~ for? (용도 묻기)</span><br>▶ <span class="gn-example">What are these for?</span><br>★ <span class="gn-point">'What is/are + 명사 + for?'는 '~은 무엇을 위한 것인가?'의 용도를 묻는 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">③</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> I'm trying to choose a picture for my story in the school newspaper.</div></div>
+      <div class="slash-reading">I'm trying to choose a picture / for my story / in the school newspaper.</div>
+      <div class="korean-reading">나는 사진을 고르려고 하는 중이야 / 내 기사를 위해 / 학교 신문에 실릴.</div>
+      <div class="grammar-note"><span class="gn-label">◆ try to + 동사원형 (노력/시도)</span><br>▶ <span class="gn-example">I'm trying to choose a picture.</span><br>★ <span class="gn-point">'try to + 동사원형'은 '~하려고 노력/시도하다'; 현재진행형으로 지금 과정임을 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">④</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> What's your story about?</div></div>
+      <div class="slash-reading">What's your story about?</div>
+      <div class="korean-reading">네 기사는 무엇에 관한 거야?</div>
+      <div class="grammar-note"><span class="gn-label">◆ What is ~ about? (주제 묻기)</span><br>▶ <span class="gn-example">What's your story about?</span><br>★ <span class="gn-point">'What is ~ about?'는 '~은 무엇에 관한 것인가?'로 주제나 내용을 묻는 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑤</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> Nature's future.</div></div>
+      <div class="slash-reading">Nature's future.</div>
+      <div class="korean-reading">자연의 미래야.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 소유격 명사구 (Nature's future)</span><br>▶ <span class="gn-example">Nature's future. (= It's about nature's future.)</span><br>★ <span class="gn-point">'s는 소유격 표시; 대화에서 문맥상 명확하면 주어+동사 생략 가능</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑥</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> Can you tell me more about it?</div></div>
+      <div class="slash-reading">Can you tell me / more about it?</div>
+      <div class="korean-reading">좀 더 말해줄 수 있어 / 그것에 대해?</div>
+      <div class="grammar-note"><span class="gn-label">◆ tell + 목적어 + more about + 명사</span><br>▶ <span class="gn-example">Can you tell me more about it?</span><br>★ <span class="gn-point">'tell + 사람 + more about + 명사'는 '~에 대해 더 말해주다'의 구조</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑦</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> It's about endangered animals in the Arctic areas.</div></div>
+      <div class="slash-reading">It's about / endangered animals / in the Arctic areas.</div>
+      <div class="korean-reading">그것은 ~에 관한 거야 / 멸종 위기 동물들 / 북극 지역의.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 과거분사 형용사 수식 (endangered)</span><br>▶ <span class="gn-example">endangered animals in the Arctic areas</span><br>★ <span class="gn-point">과거분사(endangered)가 명사(animals) 앞에서 수식; '위험에 처한/멸종 위기의'</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑧</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> That sounds interesting.</div></div>
+      <div class="slash-reading">That sounds interesting.</div>
+      <div class="korean-reading">그것 흥미롭게 들린다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 감각동사 sound + 형용사</span><br>▶ <span class="gn-example">That sounds interesting.</span><br>★ <span class="gn-point">sound + 형용사: '~하게 들리다'; 부사(interestingly)가 아닌 형용사(interesting)를 씀</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑨</div>
+        <div class="sentence-en"><span class="speaker-name">B:</span> Which picture do you think is better?</div></div>
+      <div class="slash-reading">Which picture / do you think / is better?</div>
+      <div class="korean-reading">어느 사진이 / 더 낫다고 생각해?</div>
+      <div class="grammar-note"><span class="gn-label">◆ Which ~ do you think is ...? (삽입 간접의문문)</span><br>▶ <span class="gn-example">Which picture do you think is better?</span><br>★ <span class="gn-point">'do you think'가 삽입된 간접의문문; 어순: Which picture + do you think + is better?</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑩</div>
+        <div class="sentence-en"><span class="speaker-name">G:</span> I like the one showing a skinny polar bear.</div></div>
+      <div class="slash-reading">I like the one / showing a skinny polar bear.</div>
+      <div class="korean-reading">나는 그게 좋아 / 야윈 북극곰을 보여주는.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 현재분사 후치 수식 (showing)</span><br>▶ <span class="gn-example">the one showing a skinny polar bear</span><br>★ <span class="gn-point">현재분사(showing)가 명사(one) 뒤에서 수식; '~을 보여주는'의 능동 의미</span></div>
+    </div>
+
+    <div class="text-section-label">📖 본문 1 – The Amazing Ants (도입)</div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">①</div>
+        <div class="sentence-en">For the science project, our group has chosen very special insects.</div></div>
+      <div class="slash-reading">For the science project, / our group / has chosen / very special insects.</div>
+      <div class="korean-reading">과학 프로젝트를 위해, / 우리 모둠은 / 선택했다 / 매우 특별한 곤충을.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 현재완료 (have/has + p.p.)</span><br>▶ <span class="gn-example">our group has chosen very special insects</span><br>★ <span class="gn-point">'have/has + 과거분사'의 현재완료; 과거부터 현재까지의 완료된 결과를 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">②</div>
+        <div class="sentence-en">They are very social.</div></div>
+      <div class="slash-reading">They are / very social.</div>
+      <div class="korean-reading">그것들은 / 매우 사회적이다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 형용사 보어 (social)</span><br>▶ <span class="gn-example">They are very social.</span><br>★ <span class="gn-point">social: '사회적인, 집단생활을 하는'; 개미의 특성을 간결하게 소개하는 힌트 문장</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">③</div>
+        <div class="sentence-en">They are as old as the T-Rex.</div></div>
+      <div class="slash-reading">They are / as old as the T-Rex.</div>
+      <div class="korean-reading">그것들은 / T-Rex만큼이나 오래되었다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 원급 비교: as + 형용사 + as</span><br>▶ <span class="gn-example">They are as old as the T-Rex.</span><br>★ <span class="gn-point">'as + 형용사 + as'는 '~만큼 …하다'; 개미가 공룡 시대부터 존재했음을 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">④</div>
+        <div class="sentence-en">They appear in Aesop's stories.</div></div>
+      <div class="slash-reading">They appear / in Aesop's stories.</div>
+      <div class="korean-reading">그것들은 등장한다 / 이솝 이야기에.</div>
+      <div class="grammar-note"><span class="gn-label">◆ appear in ~ (~에 등장하다)</span><br>▶ <span class="gn-example">They appear in Aesop's stories.</span><br>★ <span class="gn-point">'appear in + 장소/작품'은 '~에 나타나다/등장하다'; Aesop's는 이솝의 소유격</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑤</div>
+        <div class="sentence-en">They use a special chemical to communicate.</div></div>
+      <div class="slash-reading">They use / a special chemical / to communicate.</div>
+      <div class="korean-reading">그것들은 사용한다 / 특별한 화학 물질을 / 의사소통하기 위해.</div>
+      <div class="grammar-note"><span class="gn-label">◆ to부정사 부사적 용법 (목적)</span><br>▶ <span class="gn-example">use a special chemical to communicate</span><br>★ <span class="gn-point">to부정사의 부사적 용법(목적): '~하기 위해'의 의미로 동사를 수식</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑥</div>
+        <div class="sentence-en">Can you guess what they are?</div></div>
+      <div class="slash-reading">Can you guess / what they are?</div>
+      <div class="korean-reading">맞힐 수 있어요 / 그것들이 무엇인지?</div>
+      <div class="grammar-note"><span class="gn-label">◆ 간접의문문: what + 주어 + 동사</span><br>▶ <span class="gn-example">Can you guess what they are?</span><br>★ <span class="gn-point">간접의문문 어순: what + 주어(they) + 동사(are); 직접의문문(What are they?)과 어순 비교</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑦</div>
+        <div class="sentence-en">Yes, the answer is ants.</div></div>
+      <div class="slash-reading">Yes, / the answer is ants.</div>
+      <div class="korean-reading">네, / 정답은 개미입니다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 주격 보어 (명사 보어)</span><br>▶ <span class="gn-example">the answer is ants</span><br>★ <span class="gn-point">2형식 문장: 주어(the answer) + be동사 + 보어(ants); 주어와 보어가 동일한 대상</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑧</div>
+        <div class="sentence-en">We want to share with you what we have learned about these insects.</div></div>
+      <div class="slash-reading">We want to share with you / what we have learned / about these insects.</div>
+      <div class="korean-reading">우리는 여러분과 나누고 싶습니다 / 우리가 배워온 것을 / 이 곤충들에 대해.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 관계대명사 what + 현재완료</span><br>▶ <span class="gn-example">what we have learned about these insects</span><br>★ <span class="gn-point">'what we have learned'는 '우리가 배워온 것'; what절이 share의 직접목적어 역할</span></div>
+    </div>
+
+    <div class="text-section-label">📖 본문 2 – How Many Ants Are on Earth?</div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">①</div>
+        <div class="sentence-en">We often see ants come out of nowhere.</div></div>
+      <div class="slash-reading">We often see / ants come / out of nowhere.</div>
+      <div class="korean-reading">우리는 자주 본다 / 개미들이 나오는 것을 / 아무데서나.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 지각동사 see + 목적어 + 동사원형</span><br>▶ <span class="gn-example">see ants come out of nowhere</span><br>★ <span class="gn-point">see + 목적어 + 동사원형: 목적어의 동작 전체를 봄; 'out of nowhere'는 '어디선가/갑자기'</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">②</div>
+        <div class="sentence-en">Like humans, they live almost everywhere in the world, except a few extremely cold places including Antarctica.</div></div>
+      <div class="slash-reading">Like humans, / they live almost everywhere / in the world, / except a few extremely cold places / including Antarctica.</div>
+      <div class="korean-reading">인간처럼, / 그것들은 거의 모든 곳에 산다 / 세계에서, / 남극을 포함한 몇몇 극도로 추운 곳을 제외하고.</div>
+      <div class="grammar-note"><span class="gn-label">◆ except (제외) / including (포함)</span><br>▶ <span class="gn-example">except a few extremely cold places including Antarctica</span><br>★ <span class="gn-point">'except'는 '~을 제외하고', 'including'은 '~을 포함하여'의 전치사</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">③</div>
+        <div class="sentence-en">As of 2018, there were over 7 billion people on Earth.</div></div>
+      <div class="slash-reading">As of 2018, / there were / over 7 billion people / on Earth.</div>
+      <div class="korean-reading">2018년 기준으로, / 있었다 / 70억 명이 넘는 사람들이 / 지구에.</div>
+      <div class="grammar-note"><span class="gn-label">◆ As of ~ (~기준으로) / over (초과)</span><br>▶ <span class="gn-example">As of 2018, there were over 7 billion people on Earth.</span><br>★ <span class="gn-point">'As of + 날짜/시점'은 '~ 기준으로'; over = '~이상/초과', billion = 10억</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">④</div>
+        <div class="sentence-en">Then, how about ants?</div></div>
+      <div class="slash-reading">Then, / how about ants?</div>
+      <div class="korean-reading">그렇다면, / 개미는 어떨까요?</div>
+      <div class="grammar-note"><span class="gn-label">◆ How about ~? (화제 전환·비교)</span><br>▶ <span class="gn-example">Then, how about ants?</span><br>★ <span class="gn-point">'How about + 명사?'는 '~은 어떤가요?'의 의미; 앞 내용과 대조·비교할 때 사용</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑤</div>
+        <div class="sentence-en">According to scientists, there are about one million ants for every human in the world.</div></div>
+      <div class="slash-reading">According to scientists, / there are about one million ants / for every human in the world.</div>
+      <div class="korean-reading">과학자들에 따르면, / 약 백만 마리의 개미가 있다 / 세계의 모든 인간 한 명당.</div>
+      <div class="grammar-note"><span class="gn-label">◆ According to + 명사 (출처/근거)</span><br>▶ <span class="gn-example">According to scientists, there are about one million ants.</span><br>★ <span class="gn-point">'According to + 명사'는 '~에 따르면'; for every + 단수명사 = 매 ~마다/~당</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑥</div>
+        <div class="sentence-en">Though each ant hardly weighs anything, one million ants are as heavy as a human being weighing about 62 kilograms.</div></div>
+      <div class="slash-reading">Though each ant / hardly weighs anything, / one million ants are / as heavy as a human being / weighing about 62 kilograms.</div>
+      <div class="korean-reading">각 개미는 / 거의 아무 무게도 나가지 않지만, / 백만 마리의 개미는 / 한 사람만큼 무겁다 / 약 62킬로그램 나가는.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 원급 비교: as + 형용사 + as</span><br>▶ <span class="gn-example">as heavy as a human being weighing about 62 kilograms</span><br>★ <span class="gn-point">'as + 형용사 + as'는 '~만큼 …하다'; hardly는 '거의 ~않다'의 부정 부사</span></div>
+    </div>
+
+    <div class="text-section-label">📖 본문 3 – What Is the Ant Society Like?</div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">①</div>
+        <div class="sentence-en">Ants live in colonies which have lots of residents living together.</div></div>
+      <div class="slash-reading">Ants live / in colonies / which have lots of residents / living together.</div>
+      <div class="korean-reading">개미는 산다 / 군락 안에서 / 많은 주민들이 함께 사는.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 주격 관계대명사 which (사물)</span><br>▶ <span class="gn-example">colonies which have lots of residents</span><br>★ <span class="gn-point">사물 선행사(colonies) 뒤에 관계대명사 which로 설명절을 붙임; that으로도 대체 가능</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">②</div>
+        <div class="sentence-en">Within a colony, there are usually three different types of ants.</div></div>
+      <div class="slash-reading">Within a colony, / there are usually / three different types of ants.</div>
+      <div class="korean-reading">군락 안에는, / 보통 있다 / 세 가지 다른 유형의 개미가.</div>
+      <div class="grammar-note"><span class="gn-label">◆ Within (~ 내에) / there are + 복수명사</span><br>▶ <span class="gn-example">Within a colony, there are usually three different types of ants.</span><br>★ <span class="gn-point">'within'은 '~ 안에서/이내에'; 'there are + 복수명사'로 복수 대상의 존재 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">③</div>
+        <div class="sentence-en">There is the queen, and what she does her entire life is lay eggs.</div></div>
+      <div class="slash-reading">There is the queen, / and what she does / her entire life / is lay eggs.</div>
+      <div class="korean-reading">여왕이 있는데, / 그녀가 하는 것은 / 평생 동안 / 알을 낳는 것이다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ what절이 주어 역할</span><br>▶ <span class="gn-example">what she does her entire life is lay eggs</span><br>★ <span class="gn-point">'What + 주어 + 동사 + is + 동사원형': what절이 주어; 보어에 동사원형 사용</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">④</div>
+        <div class="sentence-en">The second type of ant is the male that helps the queen produce these eggs.</div></div>
+      <div class="slash-reading">The second type of ant is the male / that helps the queen / produce these eggs.</div>
+      <div class="korean-reading">두 번째 유형의 개미는 수컷으로, / 여왕이 / 알을 낳도록 돕는다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ help + 목적어 + 동사원형</span><br>▶ <span class="gn-example">helps the queen produce these eggs</span><br>★ <span class="gn-point">'help + 목적어 + 동사원형(또는 to부정사)': '~가 …하도록 돕다'</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑤</div>
+        <div class="sentence-en">The third type of ant is the worker.</div></div>
+      <div class="slash-reading">The third type of ant / is the worker.</div>
+      <div class="korean-reading">세 번째 유형의 개미는 / 일개미이다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 서수 표현 (the third)</span><br>▶ <span class="gn-example">The third type of ant is the worker.</span><br>★ <span class="gn-point">서수(the first/second/third): '첫 번째/두 번째/세 번째'; 순서를 열거할 때 사용</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑥</div>
+        <div class="sentence-en">Worker ants are all female and do very important jobs, like caring for eggs, defending the colony, and collecting food.</div></div>
+      <div class="slash-reading">Worker ants are all female / and do very important jobs, / like caring for eggs, / defending the colony, / and collecting food.</div>
+      <div class="korean-reading">일개미들은 모두 암컷이고 / 매우 중요한 일들을 한다, / 알을 돌보고, / 군락을 지키고, / 먹이를 모으는 것처럼.</div>
+      <div class="grammar-note"><span class="gn-label">◆ like + 동명사 (예시 나열)</span><br>▶ <span class="gn-example">like caring for eggs, defending the colony, and collecting food</span><br>★ <span class="gn-point">'like + 동명사' 구조로 예시를 나열; A, B, and C의 병렬 구조</span></div>
+    </div>
+
+    <div class="text-section-label">📖 본문 4 – How Do Ants Communicate?</div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">①</div>
+        <div class="sentence-en">Though ants do not speak like humans, they actually have a "language."</div></div>
+      <div class="slash-reading">Though ants do not speak like humans, / they actually have a "language."</div>
+      <div class="korean-reading">개미는 인간처럼 말하지 않지만, / 실제로 "언어"를 가지고 있다.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 접속사 Though/Although (양보)</span><br>▶ <span class="gn-example">Though ants do not speak like humans, they actually have a "language."</span><br>★ <span class="gn-point">'Though/Although + 주어 + 동사'는 '비록 ~이지만'의 양보 부사절</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">②</div>
+        <div class="sentence-en">Ants produce a chemical called a pheromone to communicate with one another.</div></div>
+      <div class="slash-reading">Ants produce / a chemical / called a pheromone / to communicate / with one another.</div>
+      <div class="korean-reading">개미들은 만들어낸다 / 화학 물질을 / 페로몬이라 불리는 / 의사소통하기 위해 / 서로.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 과거분사 후치 수식 (called)</span><br>▶ <span class="gn-example">a chemical called a pheromone</span><br>★ <span class="gn-point">과거분사(called)가 명사(chemical) 뒤에서 수식; '페로몬이라고 불리는 화학물질'</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">③</div>
+        <div class="sentence-en">By using the chemical, they can exchange information about food or danger.</div></div>
+      <div class="slash-reading">By using the chemical, / they can exchange information / about food or danger.</div>
+      <div class="korean-reading">그 화학 물질을 사용함으로써, / 그것들은 정보를 교환할 수 있다 / 먹이나 위험에 대한.</div>
+      <div class="grammar-note"><span class="gn-label">◆ by + 동명사 (수단)</span><br>▶ <span class="gn-example">By using the chemical, they can exchange information.</span><br>★ <span class="gn-point">'by + 동명사'는 '~함으로써'의 수단/방법을 나타내는 전치사구</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">④</div>
+        <div class="sentence-en">Ants also use touch for communication.</div></div>
+      <div class="slash-reading">Ants also use / touch / for communication.</div>
+      <div class="korean-reading">개미들은 또한 사용한다 / 접촉을 / 의사소통을 위해.</div>
+      <div class="grammar-note"><span class="gn-label">◆ use A for B (B를 위해 A를 사용하다)</span><br>▶ <span class="gn-example">Ants also use touch for communication.</span><br>★ <span class="gn-point">'use + 명사 + for + 명사'는 '~을 위해 …을 사용하다'; also는 '또한'의 첨가 부사</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑤</div>
+        <div class="sentence-en">For example, if an ant finds food, it passes on the good news by rubbing its body on its neighbor.</div></div>
+      <div class="slash-reading">For example, / if an ant finds food, / it passes on the good news / by rubbing its body / on its neighbor.</div>
+      <div class="korean-reading">예를 들어, / 개미가 먹이를 발견하면, / 좋은 소식을 전달한다 / 몸을 비빔으로써 / 이웃 개미에게.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 조건 접속사 if (만약 ~하면)</span><br>▶ <span class="gn-example">if an ant finds food, it passes on the good news</span><br>★ <span class="gn-point">조건의 if절에는 현재시제로 미래를 표현; 주절은 현재시제 또는 will 사용</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑥</div>
+        <div class="sentence-en">Since an ant has legs covered with very sensitive hairs, it can sense even the smallest touch.</div></div>
+      <div class="slash-reading">Since an ant has legs / covered with very sensitive hairs, / it can sense / even the smallest touch.</div>
+      <div class="korean-reading">개미는 다리를 가지고 있기 때문에 / 매우 민감한 털로 덮인, / 그것은 감지할 수 있다 / 아주 작은 접촉도.</div>
+      <div class="grammar-note"><span class="gn-label">◆ Since (이유: ~때문에) + 과거분사 수식</span><br>▶ <span class="gn-example">Since an ant has legs covered with very sensitive hairs</span><br>★ <span class="gn-point">'Since + 주어 + 동사'는 이유(because와 유사); covered는 legs를 수식하는 과거분사</span></div>
+    </div>
+
+    <div class="text-section-label">🐜 Fun Facts About Ants</div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">①</div>
+        <div class="sentence-en">Some queen ants live up to 30 years.</div></div>
+      <div class="slash-reading">Some queen ants / live / up to 30 years.</div>
+      <div class="korean-reading">일부 여왕 개미들은 / 산다 / 최대 30년까지.</div>
+      <div class="grammar-note"><span class="gn-label">◆ up to ~ (최대 ~까지)</span><br>▶ <span class="gn-example">live up to 30 years</span><br>★ <span class="gn-point">'up to + 숫자/명사'는 '최대 ~까지'의 의미; 일반 개미의 수명은 수주~수개월</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">②</div>
+        <div class="sentence-en">Some ants can carry things that are 50 times their own body weight.</div></div>
+      <div class="slash-reading">Some ants / can carry things / that are 50 times / their own body weight.</div>
+      <div class="korean-reading">일부 개미들은 / 물건을 옮길 수 있다 / 자신의 체중의 50배인.</div>
+      <div class="grammar-note"><span class="gn-label">◆ 배수 표현: 숫자 + times + 명사</span><br>▶ <span class="gn-example">things that are 50 times their own body weight</span><br>★ <span class="gn-point">'숫자 + times + 명사'로 배수를 표현; own은 강조를 위한 형용사 '자신의'</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">③</div>
+        <div class="sentence-en">Ants do not have lungs but breathe through small holes in their bodies.</div></div>
+      <div class="slash-reading">Ants do not have lungs / but breathe / through small holes / in their bodies.</div>
+      <div class="korean-reading">개미는 폐가 없지만 / 호흡한다 / 작은 구멍들을 통해 / 몸에 있는.</div>
+      <div class="grammar-note"><span class="gn-label">◆ not A but B (A가 아니라 B)</span><br>▶ <span class="gn-example">do not have lungs but breathe through small holes</span><br>★ <span class="gn-point">'not A but B' 구문; breathe through: '~을 통해 호흡하다'</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">④</div>
+        <div class="sentence-en">An ant has two stomachs. One stomach holds food for itself, and the other holds food to share with others.</div></div>
+      <div class="slash-reading">An ant has two stomachs. / One stomach holds food for itself, / and the other holds food / to share with others.</div>
+      <div class="korean-reading">개미는 두 개의 위가 있다. / 한 위는 자신을 위한 먹이를 보관하고, / 나머지 하나는 먹이를 보관한다 / 다른 개미와 나누기 위한.</div>
+      <div class="grammar-note"><span class="gn-label">◆ one ~ the other ~ (둘 중 하나 ~ 나머지 하나)</span><br>▶ <span class="gn-example">One stomach holds food for itself, and the other holds food to share with others.</span><br>★ <span class="gn-point">'one ~, the other ~'는 둘 중 하나와 나머지 하나를 나타내는 표현</span></div>
+    </div>
+
+    <div class="sentence-block">
+      <div class="sentence-num-row"><div class="sentence-num">⑤</div>
+        <div class="sentence-en">Most ants can swim and live 24 hours underwater.</div></div>
+      <div class="slash-reading">Most ants / can swim / and live 24 hours / underwater.</div>
+      <div class="korean-reading">대부분의 개미들은 / 수영할 수 있다 / 그리고 24시간을 산다 / 수중에서.</div>
+      <div class="grammar-note"><span class="gn-label">◆ Most + 복수명사 (대부분의)</span><br>▶ <span class="gn-example">Most ants can swim and live 24 hours underwater.</span><br>★ <span class="gn-point">'Most + 명사'는 '대부분의 ~'; underwater는 '물속에서'의 부사/형용사</span></div>
+    </div>
+
+  </div><!-- /t1 -->
+
+  <!-- ② 핵심단어 -->
+  <div class="tab-content" id="l2-t2">
+    <div class="vocab-grid">
+      <div class="vocab-card"><div class="vocab-word">insect</div><div class="vocab-meta"><span class="pos">n.</span>곤충</div><div class="vocab-example">Bees are flying insects. (벌은 나는 곤충이다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">social</div><div class="vocab-meta"><span class="pos">adj.</span>사회적인, 집단을 이루는</div><div class="vocab-example">Wolves are social animals. (늑대는 사회적 동물이다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">colony</div><div class="vocab-meta"><span class="pos">n.</span>군락, 집단</div><div class="vocab-example">Ants live in large colonies. (개미는 큰 군락을 이루어 산다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">resident</div><div class="vocab-meta"><span class="pos">n.</span>주민, 거주자</div><div class="vocab-example">All residents must follow the rules. (모든 주민은 규칙을 따라야 한다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">defend</div><div class="vocab-meta"><span class="pos">v.</span>방어하다, 지키다</div><div class="vocab-example">Soldiers defend their country. (군인들은 나라를 지킨다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">pheromone</div><div class="vocab-meta"><span class="pos">n.</span>페로몬 (화학 신호 물질)</div><div class="vocab-example">Ants use pheromones to find food. (개미는 먹이를 찾기 위해 페로몬을 사용한다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">sensitive</div><div class="vocab-meta"><span class="pos">adj.</span>민감한</div><div class="vocab-example">Dogs have very sensitive noses. (개는 매우 민감한 코를 가지고 있다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">endangered</div><div class="vocab-meta"><span class="pos">adj.</span>멸종 위기의</div><div class="vocab-example">Polar bears are endangered animals. (북극곰은 멸종 위기 동물이다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">communicate</div><div class="vocab-meta"><span class="pos">v.</span>의사소통하다</div><div class="vocab-example">We communicate through language. (우리는 언어를 통해 의사소통한다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">exchange</div><div class="vocab-meta"><span class="pos">v.</span>교환하다</div><div class="vocab-example">They exchanged phone numbers. (그들은 전화번호를 교환했다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">extremely</div><div class="vocab-meta"><span class="pos">adv.</span>극도로, 매우</div><div class="vocab-example">It was extremely cold last night. (어젯밤은 극도로 추웠다.)</div></div>
+      <div class="vocab-card"><div class="vocab-word">stomach</div><div class="vocab-meta"><span class="pos">n.</span>위, 배</div><div class="vocab-example">An ant has two stomachs. (개미는 두 개의 위가 있다.)</div></div>
+    </div>
+    <div class="expr-section-title">📌 주요 표현 및 숙어</div>
+    <div class="expr-card"><div class="expr-phrase">How do you like ~?</div><div class="expr-meaning">~이 어때? / ~를 어떻게 생각해?</div><div class="expr-usage">How do you like your new school? (새 학교는 어때?)</div></div>
+    <div class="expr-card"><div class="expr-phrase">decide on</div><div class="expr-meaning">~을 결정하다</div><div class="expr-usage">Have you decided on a major yet? (전공을 결정했어?)</div></div>
+    <div class="expr-card"><div class="expr-phrase">형용사 + enough + to부정사</div><div class="expr-meaning">~할 만큼 충분히 …하다</div><div class="expr-usage">She was brave enough to speak up. (그녀는 용감하게 말할 만큼 용기가 있었다.)</div></div>
+    <div class="expr-card"><div class="expr-phrase">according to</div><div class="expr-meaning">~에 따르면</div><div class="expr-usage">According to the news, it will rain tomorrow. (뉴스에 따르면 내일 비가 온다.)</div></div>
+    <div class="expr-card"><div class="expr-phrase">one ~, the other ~</div><div class="expr-meaning">하나는 ~, 나머지 하나는 ~</div><div class="expr-usage">One is mine, and the other is yours. (하나는 내 것이고, 나머지는 네 것이야.)</div></div>
+    <div class="expr-card"><div class="expr-phrase">up to ~</div><div class="expr-meaning">최대 ~까지</div><div class="expr-usage">You can take up to 3 books. (최대 3권까지 가져갈 수 있어.)</div></div>
+  </div><!-- /t2 -->
+
+  <!-- ③ 주요문법 -->
+  <div class="tab-content" id="l2-t3">
+    <div class="grammar-section">
+      <h3>① 원급 비교 – as + 형용사/부사 + as</h3>
+      <div class="grammar-desc">두 대상이 같은 정도임을 나타낼 때 <strong>as + 형용사/부사 + as</strong>를 씁니다.<br>부정형은 'not as(so) + 형용사 + as'로 '~만큼 …하지 않다'를 표현합니다.</div>
+      <div class="grammar-example-box">They are <strong>as old as</strong> the T-Rex.<br>→ 그것들은 T-Rex만큼이나 오래되었다.<br><br>one million ants are <strong>as heavy as</strong> a human being weighing about 62 kilograms.<br>→ 백만 마리의 개미는 약 62킬로그램 나가는 사람만큼 무겁다.</div>
+      <div class="grammar-extra">추가 예문:<br>• He is <strong>as tall as</strong> his father. (그는 아버지만큼 키가 크다.)<br>• She is <strong>not as fast as</strong> him. (그녀는 그만큼 빠르지 않다.)</div>
+    </div>
+    <div class="grammar-section">
+      <h3>② 분사의 명사 수식 – 현재분사 / 과거분사</h3>
+      <div class="grammar-desc">분사는 명사를 꾸미는 역할을 합니다.<br>• <strong>현재분사(-ing)</strong>: 능동 의미 ('~하는') &nbsp;• <strong>과거분사(-ed/불규칙)</strong>: 수동 의미 ('~된')<br>단독 분사는 명사 앞에, 분사구는 명사 뒤에 옵니다.</div>
+      <div class="grammar-example-box">the one <strong>showing</strong> a skinny polar bear (현재분사: 능동)<br>→ 야윈 북극곰을 보여주는 것<br><br>a chemical <strong>called</strong> a pheromone (과거분사: 수동)<br>→ 페로몬이라고 불리는 화학 물질<br><br>legs <strong>covered</strong> with very sensitive hairs (과거분사: 수동)<br>→ 매우 민감한 털로 덮인 다리</div>
+      <div class="grammar-extra">추가 예문:<br>• the girl <strong>singing</strong> on stage (무대에서 노래하는 소녀)<br>• the letter <strong>written</strong> in English (영어로 쓰인 편지)</div>
+    </div>
+    <div class="grammar-section">
+      <h3>③ 간접의문문 – 의문사 + 주어 + 동사</h3>
+      <div class="grammar-desc">다른 문장 안에 포함된 의문문을 <strong>간접의문문</strong>이라 합니다.<br>직접의문문: <em>How old is it?</em> → 간접의문문: <em>Can you tell me <strong>how old it is</strong>?</em><br>⚠ 간접의문문에서는 <strong>의문사 + 주어 + 동사</strong> 어순으로 바꿉니다.</div>
+      <div class="grammar-example-box">Can you tell me <strong>how old it is</strong>?<br>→ 그게 얼마나 오래됐는지 말해줄 수 있나요?<br><br>Can you guess <strong>how many bees live</strong> there?<br>→ 얼마나 많은 벌이 거기 사는지 맞혀볼 수 있어요?<br><br>Which picture <strong>do you think</strong> is better?<br>→ (삽입형) do you think 뒤는 주어+동사 순서 유지</div>
+      <div class="grammar-extra">추가 예문:<br>• I don't know <strong>where she lives</strong>. (나는 그녀가 어디 사는지 모른다.)<br>• Tell me <strong>what time it is</strong>. (몇 시인지 말해줘.)</div>
+    </div>
+  </div><!-- /t3 -->
+
+  <!-- ④ 문법연습 -->
+  <div class="tab-content" id="l2-t4">
+    <div class="quiz-block" id="l2q1">
+      <span class="quiz-num">Q1</span><span class="quiz-type-badge">빈칸 채우기</span>
+      <div class="quiz-q">원급 비교를 이용해 빈칸을 완성하세요.<br>"One million ants are _____ heavy _____ a person."</div>
+      <div class="fill-blank-area"><span>One million ants are</span><input class="fill-input" id="l2q1a" placeholder="빈칸1" style="min-width:50px"><span>heavy</span><input class="fill-input" id="l2q1b" placeholder="빈칸2" style="min-width:50px"><span>a person.</span></div>
+      <div class="quiz-actions"><button class="check-btn" onclick="checkFill('l2q1',['as','as'])">확인</button><button class="reset-btn" onclick="resetFill('l2q1')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l2q1-fb"></div>
+      <div class="quiz-explanation">💡 원급 비교: as + 형용사 + as → as heavy as</div>
+    </div>
+    <div class="quiz-block" id="l2q2">
+      <span class="quiz-num">Q2</span><span class="quiz-type-badge">선다형</span>
+      <div class="quiz-q">빈칸에 알맞은 것을 고르세요.<br>"I saw a dog _____ in the park." (공원에서 달리고 있는 개를 봤다.)</div>
+      <div class="options">
+        <button class="opt-btn" onclick="checkOpt('l2q2',this,true)">① running</button>
+        <button class="opt-btn" onclick="checkOpt('l2q2',this,false)">② run</button>
+        <button class="opt-btn" onclick="checkOpt('l2q2',this,false)">③ ran</button>
+        <button class="opt-btn" onclick="checkOpt('l2q2',this,false)">④ to run</button>
+      </div>
+      <div class="quiz-actions"><button class="reset-btn" onclick="resetOpt('l2q2')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l2q2-fb"></div>
+      <div class="quiz-explanation">💡 개가 능동적으로 '달리는' 것이므로 현재분사 running이 적합</div>
+    </div>
+    <div class="quiz-block" id="l2q3">
+      <span class="quiz-num">Q3</span><span class="quiz-type-badge">틀린 곳 고치기</span>
+      <div class="quiz-q">다음 중 어법상 <u>틀린 것</u>을 고르세요.<br>"Can you tell me <u>①how</u> <u>②old</u> <u>③is it</u> <u>④?</u>"</div>
+      <div class="options">
+        <button class="opt-btn" onclick="checkOpt('l2q3',this,false)">① how</button>
+        <button class="opt-btn" onclick="checkOpt('l2q3',this,false)">② old</button>
+        <button class="opt-btn" onclick="checkOpt('l2q3',this,true)">③ is it → it is</button>
+        <button class="opt-btn" onclick="checkOpt('l2q3',this,false)">④ ? (물음표)</button>
+      </div>
+      <div class="quiz-actions"><button class="reset-btn" onclick="resetOpt('l2q3')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l2q3-fb"></div>
+      <div class="quiz-explanation">💡 간접의문문 어순: 의문사 + 주어 + 동사 → how old it is (is it ❌)</div>
+    </div>
+    <div class="quiz-block" id="l2q4">
+      <span class="quiz-num">Q4</span><span class="quiz-type-badge">빈칸 채우기</span>
+      <div class="quiz-q">주어진 단어를 사용해 빈칸을 완성하세요. (enough / hold)<br>"The beehive is big _____ _____ over 50,000 bees."</div>
+      <div class="fill-blank-area"><span>The beehive is big</span><input class="fill-input" id="l2q4a" placeholder="빈칸1"><input class="fill-input" id="l2q4b" placeholder="빈칸2"><span>over 50,000 bees.</span></div>
+      <div class="quiz-actions"><button class="check-btn" onclick="checkFill('l2q4',['enough','to hold'])">확인</button><button class="reset-btn" onclick="resetFill('l2q4')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l2q4-fb"></div>
+      <div class="quiz-explanation">💡 형용사 + enough + to부정사: big enough to hold</div>
+    </div>
+    <div class="quiz-block" id="l2q5">
+      <span class="quiz-num">Q5</span><span class="quiz-type-badge">선다형</span>
+      <div class="quiz-q">빈칸에 알맞은 분사를 고르세요.<br>"Ants produce a chemical _____ a pheromone."</div>
+      <div class="options">
+        <button class="opt-btn" onclick="checkOpt('l2q5',this,false)">① calling</button>
+        <button class="opt-btn" onclick="checkOpt('l2q5',this,true)">② called</button>
+        <button class="opt-btn" onclick="checkOpt('l2q5',this,false)">③ to call</button>
+        <button class="opt-btn" onclick="checkOpt('l2q5',this,false)">④ calls</button>
+      </div>
+      <div class="quiz-actions"><button class="reset-btn" onclick="resetOpt('l2q5')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l2q5-fb"></div>
+      <div class="quiz-explanation">💡 화학물질이 페로몬이라고 '불리는' 것이므로 수동의 과거분사 called</div>
+    </div>
+    <div class="quiz-block" id="l2q6">
+      <span class="quiz-num">Q6</span><span class="quiz-type-badge">문장 완성하기</span>
+      <div class="quiz-q">우리말에 맞게 빈칸을 완성하세요.<br>"나는 그녀가 어디에 사는지 모른다." → I don't know _______________</div>
+      <div class="fill-blank-area"><span>I don't know</span><input class="fill-input" id="l2q6a" placeholder="간접의문문" style="min-width:180px"></div>
+      <div class="quiz-actions"><button class="check-btn" onclick="checkFill('l2q6',['where she lives'])">확인</button><button class="reset-btn" onclick="resetFill('l2q6')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l2q6-fb"></div>
+      <div class="quiz-explanation">💡 간접의문문: where + 주어(she) + 동사(lives) — 의문사 + 주어 + 동사 어순</div>
+    </div>
+  </div><!-- /t4 -->
+
+  <!-- ⑤ 본문이해 -->
+  <div class="tab-content" id="l2-t5">
+    <div class="quiz-block" id="l2c1"><span class="quiz-num">C1</span><span class="quiz-type-badge">T/F</span>
+      <div class="quiz-q">"Ants live everywhere in the world, including Antarctica."</div>
+      <div class="tf-options"><button class="tf-btn" onclick="checkTF('l2c1',this,false)">T</button><button class="tf-btn" onclick="checkTF('l2c1',this,true)">F</button></div>
+      <div class="quiz-actions"><button class="reset-btn" onclick="resetTF('l2c1')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l2c1-fb"></div>
+      <div class="quiz-explanation">💡 'except a few extremely cold places including Antarctica' — 남극은 제외</div>
+    </div>
+    <div class="quiz-block" id="l2c2"><span class="quiz-num">C2</span><span class="quiz-type-badge">T/F</span>
+      <div class="quiz-q">"Worker ants are all female and do jobs like caring for eggs."</div>
+      <div class="tf-options"><button class="tf-btn" onclick="checkTF('l2c2',this,true)">T</button><button class="tf-btn" onclick="checkTF('l2c2',this,false)">F</button></div>
+      <div class="quiz-actions"><button class="reset-btn" onclick="resetTF('l2c2')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l2c2-fb"></div>
+      <div class="quiz-explanation">💡 본문 3: 'Worker ants are all female and do very important jobs, like caring for eggs'</div>
+    </div>
+    <div class="quiz-block" id="l2c3"><span class="quiz-num">C3</span><span class="quiz-type-badge">T/F</span>
+      <div class="quiz-q">"Ants use pheromones only to find food, not to warn of danger."</div>
+      <div class="tf-options"><button class="tf-btn" onclick="checkTF('l2c3',this,false)">T</button><button class="tf-btn" onclick="checkTF('l2c3',this,true)">F</button></div>
+      <div class="quiz-actions"><button class="reset-btn" onclick="resetTF('l2c3')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l2c3-fb"></div>
+      <div class="quiz-explanation">💡 본문 4: 'exchange information about food or danger' — 먹이와 위험 모두 해당</div>
+    </div>
+    <div class="quiz-block" id="l2c4"><span class="quiz-num">C4</span><span class="quiz-type-badge">객관식</span>
+      <div class="quiz-q">개미 군락(colony) 안에 있는 세 가지 유형의 개미가 아닌 것은?</div>
+      <div class="options">
+        <button class="opt-btn" onclick="checkOpt('l2c4',this,false)">① 여왕 개미 (queen)</button>
+        <button class="opt-btn" onclick="checkOpt('l2c4',this,false)">② 수컷 개미 (male)</button>
+        <button class="opt-btn" onclick="checkOpt('l2c4',this,false)">③ 일개미 (worker)</button>
+        <button class="opt-btn" onclick="checkOpt('l2c4',this,true)">④ 병정 개미 (soldier)</button>
+      </div>
+      <div class="quiz-actions"><button class="reset-btn" onclick="resetOpt('l2c4')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l2c4-fb"></div>
+      <div class="quiz-explanation">💡 본문 3: 'three different types' = queen / male / worker — soldier는 언급 없음</div>
+    </div>
+    <div class="quiz-block" id="l2c5"><span class="quiz-num">C5</span><span class="quiz-type-badge">객관식</span>
+      <div class="quiz-q">개미가 먹이를 발견했을 때 동료에게 소식을 전달하는 방법은?</div>
+      <div class="options">
+        <button class="opt-btn" onclick="checkOpt('l2c5',this,false)">① 소리를 내어 알린다.</button>
+        <button class="opt-btn" onclick="checkOpt('l2c5',this,false)">② 더듬이를 흔든다.</button>
+        <button class="opt-btn" onclick="checkOpt('l2c5',this,true)">③ 이웃 개미에게 몸을 비빈다.</button>
+        <button class="opt-btn" onclick="checkOpt('l2c5',this,false)">④ 먹이 근처에서 빙글 돈다.</button>
+      </div>
+      <div class="quiz-actions"><button class="reset-btn" onclick="resetOpt('l2c5')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l2c5-fb"></div>
+      <div class="quiz-explanation">💡 본문 4: 'passes on the good news by rubbing its body on its neighbor'</div>
+    </div>
+    <div class="quiz-block" id="l2c6"><span class="quiz-num">C6</span><span class="quiz-type-badge">빈칸 완성</span>
+      <div class="quiz-q">본문 내용에 맞게 빈칸을 채우세요.<br>"According to scientists, there are about one _____ ants for every _____ in the world."</div>
+      <div class="fill-blank-area"><input class="fill-input" id="l2c6a" placeholder="숫자 단위"><input class="fill-input" id="l2c6b" placeholder="대상"></div>
+      <div class="quiz-actions"><button class="check-btn" onclick="checkFill('l2c6',['million','human'])">확인</button><button class="reset-btn" onclick="resetFill('l2c6')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l2c6-fb"></div>
+      <div class="quiz-explanation">💡 본문 2: 'about one million ants for every human in the world'</div>
+    </div>
+    <div class="quiz-block" id="l2c7"><span class="quiz-num">C7</span><span class="quiz-type-badge">요약문 완성</span>
+      <div class="quiz-q">본문 Fun Facts의 내용과 일치하는 것을 고르세요.</div>
+      <div class="options">
+        <button class="opt-btn" onclick="checkOpt('l2c7',this,false)">① 모든 여왕 개미는 30년을 산다.</button>
+        <button class="opt-btn" onclick="checkOpt('l2c7',this,false)">② 개미는 폐로 호흡한다.</button>
+        <button class="opt-btn" onclick="checkOpt('l2c7',this,true)">③ 개미의 한 위는 다른 개미와 나눌 먹이를 저장한다.</button>
+        <button class="opt-btn" onclick="checkOpt('l2c7',this,false)">④ 대부분의 개미는 수영을 못 한다.</button>
+      </div>
+      <div class="quiz-actions"><button class="reset-btn" onclick="resetOpt('l2c7')">↺ 리셋</button></div>
+      <div class="quiz-feedback" id="l2c7-fb"></div>
+      <div class="quiz-explanation">💡 ①Some(일부) 여왕 개미 ②작은 구멍으로 호흡 ③정답 ④Most ants can swim</div>
+    </div>
+  </div><!-- /t5 -->
+
+  <!-- ⑥ 서술형 -->
+  <div class="tab-content" id="l2-t6">
+    <div class="essay-block">
+      <h4>서술형 1</h4>
+      <div class="essay-condition">📌 조건: 본문의 내용을 바탕으로, <strong>개미가 의사소통하는 두 가지 방법</strong>을 한국어로 서술하시오. (각 방법을 한 문장씩, 총 2문장)</div>
+      <div class="answer-lines"><input class="answer-line" type="text" placeholder="방법 1:"><input class="answer-line" type="text" placeholder="방법 2:"><input class="answer-line" type="text" placeholder=""></div>
+      <button class="toggle-answer-btn" onclick="toggleAnswer(this)">📋 모범답안 보기</button>
+      <div class="model-answer">방법 1: 개미는 페로몬이라는 특별한 화학 물질을 이용하여 먹이나 위험에 대한 정보를 교환한다.<br>방법 2: 개미는 이웃 개미에게 몸을 비비는 접촉을 통해 소식을 전달한다. (개미의 다리에는 민감한 털이 있어 아주 작은 접촉도 감지할 수 있다.)</div>
+    </div>
+    <div class="essay-block">
+      <h4>서술형 2</h4>
+      <div class="essay-condition">📌 조건: 아래 우리말을 영어로 쓰시오. <strong>원급 비교(as ~ as)를 반드시 포함</strong>하고, 30단어 내외로 작성하시오.<br>"각각의 개미는 거의 아무것도 나가지 않지만, 백만 마리의 개미는 약 62킬로그램 나가는 한 사람만큼 무겁다."</div>
+      <div class="answer-lines"><input class="answer-line" type="text" placeholder="답안을 작성하세요..."><input class="answer-line" type="text" placeholder=""><input class="answer-line" type="text" placeholder=""></div>
+      <button class="toggle-answer-btn" onclick="toggleAnswer(this)">📋 모범답안 보기</button>
+      <div class="model-answer">Though each ant hardly weighs anything, one million ants are as heavy as a human being weighing about 62 kilograms.</div>
+    </div>
+  </div><!-- /t6 -->
+
+  <!-- ⑦ 정답지 -->
+  <div class="tab-content" id="l2-t7">
+    <div class="answer-key-section"><h3>④ 문법 연습문제 정답</h3>
+      <ul class="answer-list">
+        <li><strong>Q1</strong> <span class="ans">as / as</span> — 원급 비교: as + 형용사 + as</li>
+        <li><strong>Q2</strong> <span class="ans">① running</span> — 능동(달리는)이므로 현재분사</li>
+        <li><strong>Q3</strong> <span class="ans">③ is it → it is</span> — 간접의문문은 주어+동사 어순</li>
+        <li><strong>Q4</strong> <span class="ans">enough / to hold</span> — 형용사 + enough + to부정사</li>
+        <li><strong>Q5</strong> <span class="ans">② called</span> — '불리는'은 수동이므로 과거분사</li>
+        <li><strong>Q6</strong> <span class="ans">where she lives</span> — 간접의문문: where + 주어 + 동사</li>
+      </ul>
+    </div>
+    <div class="answer-key-section"><h3>⑤ 본문이해 문제 정답</h3>
+      <ul class="answer-list">
+        <li><strong>C1</strong> <span class="ans">F</span> — 남극을 포함한 극한 추운 곳 제외</li>
+        <li><strong>C2</strong> <span class="ans">T</span> — 일개미는 모두 암컷, 알 돌보기 등 담당</li>
+        <li><strong>C3</strong> <span class="ans">F</span> — 페로몬으로 먹이와 위험 모두 전달</li>
+        <li><strong>C4</strong> <span class="ans">④ 병정 개미</span> — 본문에 언급 없음</li>
+        <li><strong>C5</strong> <span class="ans">③ 이웃 개미에게 몸을 비빈다</span></li>
+        <li><strong>C6</strong> <span class="ans">million / human</span></li>
+        <li><strong>C7</strong> <span class="ans">③</span> — 개미는 two stomachs; one for itself, the other to share</li>
+      </ul>
+    </div>
+    <div class="answer-key-section"><h3>⑥ 서술형 모범답안</h3>
+      <ul class="answer-list">
+        <li><strong>서술형 1</strong> <span class="ans">방법1: 개미는 페로몬이라는 화학 물질로 먹이나 위험 정보를 교환한다. 방법2: 이웃 개미에게 몸을 비비는 접촉으로 소식을 전달한다.</span></li>
+        <li><strong>서술형 2</strong> <span class="ans">Though each ant hardly weighs anything, one million ants are as heavy as a human being weighing about 62 kilograms.</span></li>
+      </ul>
+    </div>
+  </div><!-- /t7 -->
+
+</div><!-- /lesson-panel l2 -->
+</main><!-- /main -->
+</div><!-- /layout -->
+
+<script>
+/* ── 전역 상태 ── */
+var currentLesson = 'l1';
+
+/* ── 사이드바 토글 ── */
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+/* ── 단원 전환 ── */
+function showLesson(id){
+  // 패널
+  var panels = document.querySelectorAll('.lesson-panel');
+  for(var i=0;i<panels.length;i++) panels[i].classList.remove('active');
+  var target = document.getElementById(id);
+  if(target) target.classList.add('active');
+  // 사이드바 active
+  var items = document.querySelectorAll('.sidebar-item');
+  for(var i=0;i<items.length;i++) items[i].classList.remove('active');
+  event.currentTarget.classList.add('active');
+  currentLesson = id;
+  // 모바일 사이드바 닫기
+  document.getElementById('sidebar').classList.remove('open');
+  window.scrollTo(0,0);
+}
+
+/* ── 탭 전환 ── */
+function showTab(lessonId, tabId){
+  var panel = document.getElementById(lessonId);
+  if(!panel) return;
+  // 콘텐츠
+  var contents = panel.querySelectorAll('.tab-content');
+  for(var i=0;i<contents.length;i++) contents[i].classList.remove('active');
+  var tc = document.getElementById(lessonId+'-'+tabId);
+  if(tc) tc.classList.add('active');
+  // 버튼
+  var btns = panel.querySelectorAll('.tab-btn');
+  for(var i=0;i<btns.length;i++) btns[i].classList.remove('active');
+  event.currentTarget.classList.add('active');
+}
+
+/* ── 객관식 체크 ── */
+function checkOpt(qid, btn, isCorrect){
+  var block = document.getElementById(qid);
+  var opts = block.querySelectorAll('.opt-btn');
+  // 이미 정답 클릭된 경우 무시
+  for(var i=0;i<opts.length;i++){
+    if(opts[i].classList.contains('correct')) return;
+  }
+  var fb = document.getElementById(qid+'-fb');
+  if(isCorrect){
+    btn.classList.add('correct');
+    fb.textContent = '✓ 정답입니다!';
+    fb.className = 'quiz-feedback correct';
+  } else {
+    btn.classList.add('wrong');
+    fb.textContent = '✗ 틀렸습니다. 다시 생각해 보세요.';
+    fb.className = 'quiz-feedback wrong';
+    // 정답 표시
+    for(var i=0;i<opts.length;i++){
+      if(!opts[i].classList.contains('wrong')){
+        // 정답 버튼 찾기
+        if(opts[i].getAttribute('onclick') && opts[i].getAttribute('onclick').indexOf('true')!==-1){
+          opts[i].classList.add('reveal');
+        }
+      }
+    }
+  }
+}
+
+function resetOpt(qid){
+  var block = document.getElementById(qid);
+  var opts = block.querySelectorAll('.opt-btn');
+  for(var i=0;i<opts.length;i++){
+    opts[i].classList.remove('correct','wrong','reveal');
+  }
+  var fb = document.getElementById(qid+'-fb');
+  fb.textContent=''; fb.className='quiz-feedback';
+}
+
+/* ── T/F 체크 ── */
+function checkTF(qid, btn, isCorrect){
+  var block = document.getElementById(qid);
+  var btns = block.querySelectorAll('.tf-btn');
+  for(var i=0;i<btns.length;i++){
+    if(btns[i].classList.contains('correct')) return;
+  }
+  var fb = document.getElementById(qid+'-fb');
+  if(isCorrect){
+    btn.classList.add('correct');
+    fb.textContent='✓ 정답입니다!';
+    fb.className='quiz-feedback correct';
+  } else {
+    btn.classList.add('wrong');
+    fb.textContent='✗ 틀렸습니다.';
+    fb.className='quiz-feedback wrong';
+    for(var i=0;i<btns.length;i++){
+      if(!btns[i].classList.contains('wrong')){
+        if(btns[i].getAttribute('onclick').indexOf('true')!==-1){
+          btns[i].classList.add('reveal');
+        }
+      }
+    }
+  }
+}
+
+function resetTF(qid){
+  var block = document.getElementById(qid);
+  var btns = block.querySelectorAll('.tf-btn');
+  for(var i=0;i<btns.length;i++) btns[i].classList.remove('correct','wrong','reveal');
+  var fb = document.getElementById(qid+'-fb');
+  fb.textContent=''; fb.className='quiz-feedback';
+}
+
+/* ── 빈칸 체크 ── */
+function checkFill(qid, answers){
+  var inputs = document.querySelectorAll('#'+qid+' .fill-input');
+  var fb = document.getElementById(qid+'-fb');
+  var allCorrect = true;
+  for(var i=0;i<inputs.length;i++){
+    var val = inputs[i].value.trim().toLowerCase();
+    var ans = (answers[i]||'').toLowerCase();
+    inputs[i].classList.remove('correct','wrong');
+    if(val === ans){
+      inputs[i].classList.add('correct');
+    } else {
+      inputs[i].classList.add('wrong');
+      allCorrect = false;
+    }
+  }
+  if(allCorrect){
+    fb.textContent='✓ 정답입니다!';
+    fb.className='quiz-feedback correct';
+  } else {
+    fb.textContent='✗ 틀렸습니다. 정답: '+answers.join(' / ');
+    fb.className='quiz-feedback wrong';
+  }
+}
+
+function resetFill(qid){
+  var inputs = document.querySelectorAll('#'+qid+' .fill-input');
+  for(var i=0;i<inputs.length;i++){
+    inputs[i].value='';
+    inputs[i].classList.remove('correct','wrong');
+  }
+  var fb = document.getElementById(qid+'-fb');
+  fb.textContent=''; fb.className='quiz-feedback';
+}
+
+/* ── 모범답안 토글 ── */
+function toggleAnswer(btn){
+  var ma = btn.nextElementSibling;
+  if(ma.classList.contains('show')){
+    ma.classList.remove('show');
+    btn.textContent='📋 모범답안 보기';
+  } else {
+    ma.classList.add('show');
+    btn.textContent='📋 모범답안 닫기';
+  }
+}
+</script>
+</body>
+</html>
